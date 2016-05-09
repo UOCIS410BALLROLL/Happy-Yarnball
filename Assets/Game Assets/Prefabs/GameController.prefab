@@ -40,13 +40,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 125776, guid: 6f8b061c08c58e14da1077fb44d6ba0f, type: 2}
-  start_x: -198
-  start_y: -1
-  start_z: 32
+  start_x: 0
+  start_y: 0
+  start_z: 0
   morselText: {fileID: 0}
-  gameOverText: {fileID: 0}
+  alertText: {fileID: 0}
   timerText: {fileID: 0}
-  minMorsels: 6
+  cheatsEnabled: 0
+  minMorsels: 0
+  goalTime: 100
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
