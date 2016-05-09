@@ -86,7 +86,7 @@ public class PlayerController : MonoBehaviour {
 	public void MoonJump()
 	{
 		//cheat function, activates through GameController
-		Vector3 movement = new Vector3 (rb.velocity.x, 4.0f, rb.velocity.y);
+		Vector3 movement = new Vector3 (rb.velocity.x, 40.0f, rb.velocity.y);
 		rb.AddForce (movement * speed * upgrade);
 	}
 
