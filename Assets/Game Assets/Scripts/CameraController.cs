@@ -54,7 +54,9 @@ public class CameraController : MonoBehaviour {
 	
 	float GetCameraDistance(Vector3 direction) {
 		RaycastHit hit;
-		return Physics.SphereCast(player.transform.position, 0.3f, direction, out hit, maxDistance) ? hit.distance : maxDistance;
+		int layermask = 1 << 2;
+		layermask = ~layermask;
+		return Physics.SphereCast(player.transform.position, 0.3f, direction, out hit, maxDistance, layermask) ? hit.distance : maxDistance;
 	}
 
     void UpdateCameraPosition()

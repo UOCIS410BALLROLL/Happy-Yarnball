@@ -15,6 +15,8 @@ public class PlayerController : MonoBehaviour {
 	private bool isJumping, isPowered, canDoubleJump, hasDoubleJumped;
 	private float powerEnd;
 	private float upgrade;
+	private float scaleVal;
+	
 
 	void Start ()
 	{
@@ -24,6 +26,7 @@ public class PlayerController : MonoBehaviour {
 		canDoubleJump = false;
 		audioSource = GetComponent<AudioSource> ();
 		upgrade = 1;
+		scaleVal = 1.0f;
     }
 	
 	bool isGrounded() {
@@ -31,7 +34,7 @@ public class PlayerController : MonoBehaviour {
 		
 		//Casts a sphere of radius -0.1f less than the length of the radius of the player's sphere collider. This sphere is sent downward a maximum distance of 0.2f (0.1f below the
 		//collider boundary) and attempts to detect a collision with the ground.
-		return Physics.SphereCast(gameObject.transform.position, GetComponent<SphereCollider>().radius -0.1f, Vector3.down, out hit, 0.2f);
+		return Physics.SphereCast(gameObject.transform.position, (GetComponent<SphereCollider>().radius - 0.1f) * scaleVal, Vector3.down, out hit, 0.2f);
 	}
 	
 	void OnCollisionEnter(Collision collisionInfo) {
@@ -63,6 +66,8 @@ public class PlayerController : MonoBehaviour {
 				upgrade = 1;
 				isPowered = false;
 				canDoubleJump = false;
+				scaleVal = 1.0f;
+				rb.transform.localScale = new Vector3(scaleVal, scaleVal, scaleVal);
 			}
 		}
 
@@ -120,7 +125,7 @@ public class PlayerController : MonoBehaviour {
         {
             other.gameObject.SetActive(false);
             isPowered = true;
-            float scaleVal = 0.7f;
+            scaleVal = 0.7f;
             rb.transform.localScale = new Vector3(scaleVal, scaleVal, scaleVal);
             powerEnd = Time.time + powerTime;
         }
