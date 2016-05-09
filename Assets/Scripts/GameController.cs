@@ -10,10 +10,10 @@ public class GameController : MonoBehaviour {
     public float start_y = 0;
     public float start_z = 0;
     public Text morselText;
-    public Text gameOverText;
-    //public Text startText;
+    public Text alertText;
 	public Text timerText;
     public int minMorsels;
+	public int goalTime;
 
 	float currentTime = 0.0f; //here
 
@@ -43,17 +43,34 @@ public class GameController : MonoBehaviour {
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
+		//Restart level
+		//Load each level 
+		//Moon Jump
+		//Increase Speed
+		//Decrease Speed
+		//Teleport to finish
 		Timer ();
     }
 
     IEnumerator LevelComplete()
     {
-        gameOverText.text = "Level Complete!";
+		alertText.text = string.Format("Level Complete in {0} Seconds, you got {1}/3 stars!", currentTime, GetStars());
         player.GetComponent<Rigidbody>().isKinematic = true;
         yield return new WaitForSeconds(2);
-        gameOverText.text = "\n" + gameOverText.text + "\nPress Any Key to Restart";
+        alertText.text = "\n" + alertText.text + "\nPress Any Key to go to the next level";
         gameOver = true;
     }
+	public int GetStars()
+	{
+		if (morselCount >= totalMorsels) 
+		{
+			if (currentTime <= goalTime) {
+				return 3;
+			}
+			return 2;
+		}
+		return 1;
+	}
     public int MorselCount()
     {
         return morselCount;
@@ -93,29 +110,29 @@ public class GameController : MonoBehaviour {
 
     IEnumerator StartLevelMessage()
     {
-        gameOverText.text = string.Format("Level Goal: {0}/{1} Cats", minMorsels, totalMorsels);
+        alertText.text = string.Format("Level Goal: {0}/{1} Cats", minMorsels, totalMorsels);
         yield return new WaitForSeconds(3);
-        gameOverText.text = "";
+        alertText.text = "";
     }
 	
 	IEnumerator NotFinishedMessage() {
-		gameOverText.text = string.Format("Need {0} Cats to Advance", minMorsels-morselCount);
+		alertText.text = string.Format("Need {0} Cats to Advance", minMorsels-morselCount);
 		yield return new WaitForSeconds(2);
-		gameOverText.text = "";
+		alertText.text = "";
 		displayingMessage = false;
 	}
 
     IEnumerator GameOver()
     {
-        gameOverText.text = "Game Over";
+        alertText.text = "Game Over";
         yield return new WaitForSeconds(2);
-        gameOverText.text = "\n" + gameOverText.text + "\nPress Any Key to Restart";
+        alertText.text = "\n" + alertText.text + "\nPress Any Key to Restart";
         gameOver = true;
     }
 
 	void Timer()
 	{
-		if (gameOverText.text == "Game Over") { // change to death condition
+		if (alertText.text == "Game Over") { // change to death condition
 			currentTime = 0;
 		}
 		else{
