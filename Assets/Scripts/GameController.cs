@@ -12,6 +12,7 @@ public class GameController : MonoBehaviour {
     public Text morselText;
     public Text alertText;
 	public Text timerText;
+	public bool cheatsEnabled; // set True for development, False for testing (maybe easter egg way to enable)
     public int minMorsels;
 	public int goalTime;
 
@@ -39,18 +40,91 @@ public class GameController : MonoBehaviour {
 
     void Update()
     {
-        if(gameOver && Input.anyKey)
+        if(gameOver && Input.anyKeyDown)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
-		//Restart level
-		//Load each level 
-		//Moon Jump
-		//Increase Speed
-		//Decrease Speed
-		//Teleport to finish
+		if(cheatsEnabled)
+		{
+			CheckCheats ();
+		}
 		Timer ();
     }
+
+	void CheckCheats()
+	{
+		//A number of cheats useful for debugging, if you think of something feel free to add it
+		if (Input.GetKeyDown("r"))
+		{
+			//Restart the Current Level
+			SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+		}
+		else if (Input.GetKeyDown("`"))
+		{
+			//Load the Menu Scene
+			SceneManager.LoadScene(0);
+		}
+		else if (Input.GetKeyDown("1"))
+		{
+			//Load the 1st level
+			SceneManager.LoadScene(1);
+		}
+		else if (Input.GetKeyDown("2"))
+		{
+			//Load the 2nd Level
+			SceneManager.LoadScene(2);
+		}
+		else if (Input.GetKeyDown("3"))
+		{
+			//Load the 3rd Level
+			SceneManager.LoadScene(3);
+		}
+		else if (Input.GetKeyDown("4"))
+		{
+			//Load the 4th Level
+			SceneManager.LoadScene(4);
+		}
+		else if (Input.GetKeyDown("5"))
+		{
+			//Load the 5th Level
+			SceneManager.LoadScene(5);
+		}
+		else if (Input.GetKeyDown("0"))
+		{
+			//Load the prototype level
+			SceneManager.LoadScene(SceneManager.GetSceneByName("PrototypeScene").name);
+		}
+		else if (Input.GetKeyDown("j"))
+		{
+			//Moon Jump button which lets you jump infinite times for as long as you hold down the button
+			player.GetComponent<PlayerController>().MoonJump();
+		}
+		else if (Input.GetKeyDown("+"))
+		{
+			//Increase the player's maximum speed
+			player.GetComponent<PlayerController>().speed += 1;
+		}
+		else if (Input.GetKeyDown("-"))
+		{
+			//Decrease the player's maximum speed
+			player.GetComponent<PlayerController>().speed -= 1;
+		}
+		else if (Input.GetKeyDown("t"))
+		{
+			//Teleport the player to the goal
+			player.transform.position = GameObject.FindGameObjectWithTag ("Goal").transform.position;
+		}
+		else if (Input.GetKeyDown("m"))
+		{
+			//Increase the number of cats the player has collected
+			AddMorsel ();
+		}
+		else if (Input.GetKeyDown("y"))
+		{
+			//Reset the timer
+			currentTime = 0;
+		}
+	}
 
     IEnumerator LevelComplete()
     {
@@ -58,7 +132,7 @@ public class GameController : MonoBehaviour {
         player.GetComponent<Rigidbody>().isKinematic = true;
         yield return new WaitForSeconds(2);
         alertText.text = "\n" + alertText.text + "\nPress Any Key to go to the next level";
-        gameOver = true;
+		SceneManager.LoadScene (SceneManager.GetActiveScene ().buildIndex);
     }
 	public int GetStars()
 	{

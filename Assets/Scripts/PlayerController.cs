@@ -83,6 +83,13 @@ public class PlayerController : MonoBehaviour {
 		rb.velocity = new Vector3(clampedVelocity.x, rb.velocity.y, clampedVelocity.y);
 	}
 
+	public void MoonJump()
+	{
+		//cheat function, activates through GameController
+		Vector3 movement = new Vector3 (rb.velocity.x, 4.0f, rb.velocity.y);
+		rb.AddForce (movement * speed * upgrade);
+	}
+
 	void OnTriggerEnter(Collider other) 
 	{
 		if (other.gameObject.CompareTag ( "Cat"))
