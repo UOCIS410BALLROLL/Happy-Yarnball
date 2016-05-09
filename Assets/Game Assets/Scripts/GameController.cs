@@ -132,7 +132,7 @@ public class GameController : MonoBehaviour {
         player.GetComponent<Rigidbody>().isKinematic = true;
         yield return new WaitForSeconds(2);
         alertText.text = "\n" + alertText.text + "\nPress Any Key to go to the next level";
-		SceneManager.LoadScene (SceneManager.GetActiveScene ().buildIndex);
+		SceneManager.LoadScene (SceneManager.GetActiveScene ().buildIndex+1);
     }
 	public int GetStars()
 	{
