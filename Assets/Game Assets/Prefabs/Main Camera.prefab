@@ -99,6 +99,7 @@ MonoBehaviour:
   start_z: 0
   max_angle: 80
   min_angle: -20
+  audioSource: {fileID: 8275870, guid: 631f543b258da45ecb8cec4ba00dcacf, type: 2}
 --- !u!124 &12418728
 Behaviour:
   m_ObjectHideFlags: 1

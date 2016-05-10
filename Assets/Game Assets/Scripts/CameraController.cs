@@ -13,12 +13,19 @@ public class CameraController : MonoBehaviour {
     private GameObject player;
     private Vector3 target_pos;
 	private float positive_min;
+
+	public AudioSource audioSource;
+
     
     void Start()
     {
         transform.eulerAngles = new Vector3(start_x, start_y, start_z);
         transform.position = new Vector3(0, 0, 0);
 		positive_min = ((min_angle % 360) + 360) % 360;
+
+		audioSource = GetComponent<AudioSource> ();
+//		audioSource.Play ();
+
     }
 
     void Update()

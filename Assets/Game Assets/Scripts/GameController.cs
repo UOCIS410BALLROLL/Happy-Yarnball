@@ -24,6 +24,8 @@ public class GameController : MonoBehaviour {
 	private bool displayingMessage;
     private GameObject cam;
 
+//	public AudioSource desertSound;
+
     void Start()
     {
         morselCount = 0;
@@ -36,6 +38,9 @@ public class GameController : MonoBehaviour {
         cam.GetComponent<CameraController>().SetPlayer(player);
         StartCoroutine(StartLevelMessage());
 		displayingMessage = false;
+
+//		desertSound = GetComponent<AudioSource> ();
+
     }
 
     void Update()
@@ -66,6 +71,7 @@ public class GameController : MonoBehaviour {
 		}
 		else if (Input.GetKeyDown("1"))
 		{
+//			desertSound.Play ();
 			//Load the 1st level
 			SceneManager.LoadScene(1);
 		}
