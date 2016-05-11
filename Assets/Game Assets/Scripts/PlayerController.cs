@@ -120,7 +120,7 @@ public class PlayerController : MonoBehaviour {
         {
             other.gameObject.SetActive(false);
             isPowered = true;
-            float scaleVal = 0.7f;
+            float scaleVal = 0.4f;
             rb.transform.localScale = new Vector3(scaleVal, scaleVal, scaleVal);
             powerEnd = Time.time + powerTime;
         }
