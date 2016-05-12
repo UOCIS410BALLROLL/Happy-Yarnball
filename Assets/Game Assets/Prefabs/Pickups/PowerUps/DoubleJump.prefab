@@ -13,7 +13,7 @@ GameObject:
   - 65: {fileID: 6574304}
   - 54: {fileID: 5495466}
   - 114: {fileID: 11468934}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: DoubleJump
   m_TagString: DoubleJump
   m_Icon: {fileID: 0}

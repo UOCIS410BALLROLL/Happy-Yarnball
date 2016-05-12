@@ -11,7 +11,7 @@ GameObject:
   - 33: {fileID: 3389414}
   - 23: {fileID: 2389414}
   - 64: {fileID: 6482726}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: SpeedUp
   m_TagString: SpeedUp1
   m_Icon: {fileID: 0}

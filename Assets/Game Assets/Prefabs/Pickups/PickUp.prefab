@@ -13,7 +13,7 @@ GameObject:
   - 23: {fileID: 2392520}
   - 114: {fileID: 11452276}
   - 54: {fileID: 5456122}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: PickUp
   m_TagString: Morsel
   m_Icon: {fileID: 0}

@@ -11,7 +11,7 @@ GameObject:
   - 33: {fileID: 3399496}
   - 23: {fileID: 2399496}
   - 64: {fileID: 6487534}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Flags Green
   m_TagString: Goal
   m_Icon: {fileID: 0}

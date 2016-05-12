@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 438616}
   - 33: {fileID: 3338616}
   - 23: {fileID: 2338616}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: ShrinkingPowerUp
   m_TagString: Shrink
   m_Icon: {fileID: 0}
