@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour {
 	public float jumpHeight;
 	public float upgradeAmt; //How much does the powerup increase speed
 	public float powerTime; //How long the powerup lasts in seconds
+    public float shrinkTime; //How long the character stays shrunk
 
 	private Rigidbody rb;
     private GameController game;
@@ -24,6 +25,7 @@ public class PlayerController : MonoBehaviour {
         game = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();       //I can't figure out how to instatiate an instance of GameController
 		isJumping=false;
 		canDoubleJump = false;
+        shrinkTime = 2.0f;
 		audioSource = GetComponent<AudioSource> ();
 		upgrade = 1;
 		scaleVal = 1.0f;
@@ -127,7 +129,7 @@ public class PlayerController : MonoBehaviour {
             isPowered = true;
 			scaleVal = 0.4f;
             rb.transform.localScale = new Vector3(scaleVal, scaleVal, scaleVal);
-            powerEnd = Time.time + powerTime;
+            powerEnd = Time.time + shrinkTime;
         }
         
     }
