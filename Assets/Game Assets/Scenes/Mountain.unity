@@ -863,6 +863,7 @@ GameObject:
   - 215: {fileID: 1070454066}
   - 114: {fileID: 1070454064}
   - 65: {fileID: 1070454061}
+  - 114: {fileID: 1070454067}
   m_Layer: 2
   m_Name: LavaFloor
   m_TagString: Untagged
@@ -986,6 +987,20 @@ ReflectionProbe:
   m_RenderDynamicObjects: 0
   m_UseOcclusionCulling: 1
   m_CustomBakedTexture: {fileID: 0}
+--- !u!114 &1070454067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1070454059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edb51d78c82204a4bbf7795d40b26f96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0.25
+  end_x: 243.5
+  end_z: 273.5
 --- !u!1 &1087851671
 GameObject:
   m_ObjectHideFlags: 0
