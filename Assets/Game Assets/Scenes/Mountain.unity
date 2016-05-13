@@ -971,6 +971,48 @@ Transform:
   - {fileID: 253530111}
   m_Father: {fileID: 0}
   m_RootOrder: 3
+--- !u!1001 &754352786
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 493206, guid: e4d4af271c96dfb44a6aa40a85d5a98e, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 219.91866
+      objectReference: {fileID: 0}
+    - target: {fileID: 493206, guid: e4d4af271c96dfb44a6aa40a85d5a98e, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 74.61766
+      objectReference: {fileID: 0}
+    - target: {fileID: 493206, guid: e4d4af271c96dfb44a6aa40a85d5a98e, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 257.61514
+      objectReference: {fileID: 0}
+    - target: {fileID: 493206, guid: e4d4af271c96dfb44a6aa40a85d5a98e, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 493206, guid: e4d4af271c96dfb44a6aa40a85d5a98e, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 493206, guid: e4d4af271c96dfb44a6aa40a85d5a98e, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 493206, guid: e4d4af271c96dfb44a6aa40a85d5a98e, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 493206, guid: e4d4af271c96dfb44a6aa40a85d5a98e, type: 2}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: e4d4af271c96dfb44a6aa40a85d5a98e, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1001 &755178479
 Prefab:
   m_ObjectHideFlags: 0
@@ -1815,45 +1857,6 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 402202, guid: e2073bf531597484582e70ff5430f394, type: 2}
   m_PrefabInternal: {fileID: 1326589125}
---- !u!1 &1359413724
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 1359413726}
-  - 114: {fileID: 1359413725}
-  m_Layer: 0
-  m_Name: VolcanoGenerator
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1359413725
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1359413724}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4fc704fec2962b488e3480e6c3bd196, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &1359413726
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1359413724}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 219.91866, y: 74.61766, z: 257.61514}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
 --- !u!1 &1368513498
 GameObject:
   m_ObjectHideFlags: 0
