@@ -42,7 +42,7 @@ public class PlayerController : MonoBehaviour {
 		
 		//Casts a sphere of radius -0.1f less than the length of the radius of the player's sphere collider. This sphere is sent downward a maximum distance of 0.2f (0.1f below the
 		//collider boundary) and attempts to detect a collision with the ground.
-		return Physics.SphereCast(gameObject.transform.position, (GetComponent<SphereCollider>().radius - 0.1f) * scaleVal, Vector3.down, out hit, 0.2f);
+		return Physics.SphereCast(gameObject.transform.position, (GetComponent<SphereCollider>().radius - 0.1f) * scaleVal, Vector3.down, out hit, 0.25f);
 	}
 	
 	void OnCollisionEnter(Collision collisionInfo) {
