@@ -730,7 +730,7 @@ GameObject:
   - 154: {fileID: 800436017}
   m_Layer: 8
   m_Name: Terrain
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -797,7 +797,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1030885118}
   - 108: {fileID: 1030885117}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Spotlight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -858,11 +858,12 @@ GameObject:
   m_Component:
   - 4: {fileID: 1070454063}
   - 33: {fileID: 1070454062}
-  - 64: {fileID: 1070454061}
   - 23: {fileID: 1070454060}
   - 54: {fileID: 1070454065}
   - 215: {fileID: 1070454066}
-  m_Layer: 0
+  - 114: {fileID: 1070454064}
+  - 65: {fileID: 1070454061}
+  m_Layer: 2
   m_Name: LavaFloor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -895,8 +896,8 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!64 &1070454061
-MeshCollider:
+--- !u!65 &1070454061
+BoxCollider:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
@@ -905,8 +906,8 @@ MeshCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Convex: 1
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+  m_Size: {x: 10, y: 2.220446e-16, z: 10}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!33 &1070454062
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -927,6 +928,17 @@ Transform:
   - {fileID: 1030885118}
   m_Father: {fileID: 0}
   m_RootOrder: 7
+--- !u!114 &1070454064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1070454059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab21e65a9f6768f4ebb5cf4e8a229b09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!54 &1070454065
 Rigidbody:
   m_ObjectHideFlags: 0
