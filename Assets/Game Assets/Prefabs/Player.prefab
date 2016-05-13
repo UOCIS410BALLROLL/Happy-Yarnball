@@ -170,6 +170,9 @@ MonoBehaviour:
   jumpHeight: 5
   upgradeAmt: 2.5
   powerTime: 10
+  shrinkTime: 0
+  lavaSinkTime: 1
+  lavaSinkMaxAngularVelocity: 1
 --- !u!135 &13570510
 SphereCollider:
   m_ObjectHideFlags: 1

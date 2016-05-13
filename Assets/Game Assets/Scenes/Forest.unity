@@ -562,6 +562,10 @@ Prefab:
       propertyPath: audioSource
       value: 
       objectReference: {fileID: 1196962570}
+    - target: {fileID: 11454776, guid: e2073bf531597484582e70ff5430f394, type: 2}
+      propertyPath: start_y
+      value: 180
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e2073bf531597484582e70ff5430f394, type: 2}
   m_IsPrefabParent: 0
@@ -1789,7 +1793,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11414128, guid: e86b04a9d10335a49bcddacaa1b3382a, type: 2}
       propertyPath: start_y
-      value: 11
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11414128, guid: e86b04a9d10335a49bcddacaa1b3382a, type: 2}
       propertyPath: alertText
@@ -1809,11 +1813,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11414128, guid: e86b04a9d10335a49bcddacaa1b3382a, type: 2}
       propertyPath: start_z
-      value: -16
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11414128, guid: e86b04a9d10335a49bcddacaa1b3382a, type: 2}
       propertyPath: start_x
-      value: -18
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e86b04a9d10335a49bcddacaa1b3382a, type: 2}

@@ -9,11 +9,14 @@ public class PlayerController : MonoBehaviour {
 	public float upgradeAmt; //How much does the powerup increase speed
 	public float powerTime; //How long the powerup lasts in seconds
     public float shrinkTime; //How long the character stays shrunk
+	public float lavaSinkTime; //How long it takes for the player to sink into lava
+	public float lavaSinkMaxAngularVelocity;
 
 	private Rigidbody rb;
     private GameController game;
 	private AudioSource audioSource;
 	private bool isJumping, isPowered, canDoubleJump, hasDoubleJumped;
+	private bool touchedLava;
 	private float powerEnd;
 	private float upgrade;
 	private float scaleVal;
@@ -24,7 +27,10 @@ public class PlayerController : MonoBehaviour {
 		rb = GetComponent<Rigidbody>();
         game = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();       //I can't figure out how to instatiate an instance of GameController
 		isJumping=false;
+		isPowered = false;
 		canDoubleJump = false;
+		hasDoubleJumped = false;
+		touchedLava = false;
         shrinkTime = 2.0f;
 		audioSource = GetComponent<AudioSource> ();
 		upgrade = 1;
@@ -47,6 +53,10 @@ public class PlayerController : MonoBehaviour {
 
 	void FixedUpdate ()
 	{
+		if(touchedLava) {
+			return;
+		}
+		
 		float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
 
@@ -133,6 +143,24 @@ public class PlayerController : MonoBehaviour {
         }
         
     }
+	
+	[SerializeField]
+	public IEnumerator LavaDeath() {
+		touchedLava = true;
+		rb.velocity = new Vector3(0, 0, 0);
+		rb.angularVelocity = Vector3.ClampMagnitude(rb.angularVelocity, lavaSinkMaxAngularVelocity);
+		
+		float playerHeight = 2 * GetComponent<SphereCollider>().radius;
+		float playerY = rb.transform.position.y;
+		
+		for(float t = 0.0f; t < 1.0f; t += Time.deltaTime/lavaSinkTime) {
+			rb.transform.position = new Vector3(rb.transform.position.x, playerY - (playerHeight * t), rb.transform.position.z);
+			yield return null;
+		}
+		
+		GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>().PlayerDestroy();
+	}
+	
     /*void shrinkPlayer()
     {
         float scaleVal = 0.7f;
