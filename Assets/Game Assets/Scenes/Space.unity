@@ -176,7 +176,7 @@ Transform:
   - {fileID: 1902091507}
   - {fileID: 459087255}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 2
 --- !u!1001 &261026416
 Prefab:
   m_ObjectHideFlags: 0
@@ -1023,7 +1023,7 @@ RectTransform:
   - {fileID: 2083059663}
   - {fileID: 1009090459}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 4
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -1387,7 +1387,7 @@ Transform:
   m_Children:
   - {fileID: 1958762666}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 1
 --- !u!54 &1209863089
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2529,6 +2529,10 @@ Prefab:
       propertyPath: start_x
       value: 17.2
       objectReference: {fileID: 0}
+    - target: {fileID: 11414128, guid: e86b04a9d10335a49bcddacaa1b3382a, type: 2}
+      propertyPath: minMorsels
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e86b04a9d10335a49bcddacaa1b3382a, type: 2}
   m_IsPrefabParent: 0
@@ -3008,4 +3012,4 @@ Transform:
   - {fileID: 572169446}
   - {fileID: 46785743}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 3
