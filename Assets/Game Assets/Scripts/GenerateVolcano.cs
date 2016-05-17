@@ -32,6 +32,8 @@ public class GenerateVolcano : MonoBehaviour {
 		}
 		tdata.SetHeights(0, 0, data);
 
-		Terrain.CreateTerrainGameObject(tdata).name = "Volcano";
+		GameObject terrain = Terrain.CreateTerrainGameObject (tdata);
+		terrain.name = "Volcano";
+		terrain.GetComponent<Terrain> ().materialType = Terrain.MaterialType.Custom;
 	}
 }

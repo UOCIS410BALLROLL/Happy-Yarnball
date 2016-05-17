@@ -13,6 +13,7 @@ public class LavaDeathScript : MonoBehaviour {
 		if(other.gameObject.CompareTag("Player") && !killingPlayer) {
 			killingPlayer = true;
 			GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraController>().SetPlayer(null);
+			GameObject.FindGameObjectWithTag ("Lava").GetComponent<LavaRiseController> ().StopLava ();
 			StartCoroutine(GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().LavaDeath());
 		}
 	}
