@@ -167,9 +167,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 11
-  jumpHeight: 5
+  jumpHeight: 7
   upgradeAmt: 2.5
-  powerTime: 10
+  powerTime: 5
   shrinkTime: 0
   lavaSinkTime: 1
   lavaSinkMaxAngularVelocity: 1
