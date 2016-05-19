@@ -13,6 +13,7 @@ GameObject:
   - 65: {fileID: 6574304}
   - 54: {fileID: 5495466}
   - 114: {fileID: 11468934}
+  - 114: {fileID: 11462914}
   m_Layer: 2
   m_Name: DoubleJump
   m_TagString: DoubleJump
@@ -92,6 +93,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.2, y: 0.2, z: 0.04}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &11462914
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 191076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f5814ba51779a446a659e69ab05df48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upgradeDuration: 5
+  upgradePower: 0
+  respawnTime: 10
 --- !u!114 &11468934
 MonoBehaviour:
   m_ObjectHideFlags: 1
