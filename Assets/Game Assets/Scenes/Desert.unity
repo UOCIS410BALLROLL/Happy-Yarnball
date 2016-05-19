@@ -1210,8 +1210,8 @@ Transform:
   - {fileID: 644923458}
   - {fileID: 799116436}
   - {fileID: 1496235231}
-  - {fileID: 460543016}
   - {fileID: 546646456}
+  - {fileID: 460543016}
   - {fileID: 845709883}
   - {fileID: 33058020}
   - {fileID: 2138604727}
@@ -5971,6 +5971,10 @@ Prefab:
       propertyPath: timerText
       value: 
       objectReference: {fileID: 1730801375}
+    - target: {fileID: 11414128, guid: e86b04a9d10335a49bcddacaa1b3382a, type: 2}
+      propertyPath: jumpHeight
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e86b04a9d10335a49bcddacaa1b3382a, type: 2}
   m_IsPrefabParent: 0

@@ -1269,6 +1269,10 @@ Prefab:
       propertyPath: alertText
       value: 
       objectReference: {fileID: 145666310}
+    - target: {fileID: 11414128, guid: e86b04a9d10335a49bcddacaa1b3382a, type: 2}
+      propertyPath: jumpHeight
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e86b04a9d10335a49bcddacaa1b3382a, type: 2}
   m_IsPrefabParent: 0

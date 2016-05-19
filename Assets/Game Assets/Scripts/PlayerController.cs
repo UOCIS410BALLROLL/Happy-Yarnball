@@ -5,7 +5,6 @@ using System.Collections;
 public class PlayerController : MonoBehaviour {
 
 	public float speed;
-	public float jumpHeight;
 	public float lavaSinkTime; //How long it takes for the player to sink into lava
 	public float lavaSinkMaxAngularVelocity;
 
@@ -14,6 +13,7 @@ public class PlayerController : MonoBehaviour {
 	private AudioSource audioSource;
 	private bool isJumping, isPowered, canDoubleJump, hasDoubleJumped;
 	private bool touchedLava;
+	private float jumpHeight;
 	private float powerEnd;
 	private float upgrade;
 	private float scaleVal;
@@ -158,6 +158,11 @@ public class PlayerController : MonoBehaviour {
 		}
 		
 		GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>().PlayerDestroy();
+	}
+
+	[SerializeField]
+	public void SetJumpHeight(float height) {
+		jumpHeight = height;
 	}
 	
     /*void shrinkPlayer()

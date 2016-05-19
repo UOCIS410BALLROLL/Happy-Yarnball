@@ -15,6 +15,7 @@ public class GameController : MonoBehaviour {
 	public bool cheatsEnabled; // set True for development, False for testing (maybe easter egg way to enable)
     public int minMorsels;
 	public int goalTime;
+	public float jumpHeight;
 
 	float currentTime = 0.0f; //here
 
@@ -34,6 +35,7 @@ public class GameController : MonoBehaviour {
         minMorsels = Mathf.Clamp(minMorsels, 0, totalMorsels);
         gameOver = false;
         player = Instantiate(player, new Vector3(start_x, start_y, start_z), player.transform.rotation) as GameObject;
+		player.GetComponent<PlayerController> ().SetJumpHeight (jumpHeight);
         cam = GameObject.FindGameObjectWithTag("MainCamera");
         cam.GetComponent<CameraController>().SetPlayer(player);
         StartCoroutine(StartLevelMessage());
