@@ -15,9 +15,7 @@ public class UpgradeController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (!this.gameObject.activeSelf && Time.time >= inactiveTime){
-			this.gameObject.SetActive (true);
-		}
+
 	}
 
 	public float GetDuration(){
@@ -29,8 +27,12 @@ public class UpgradeController : MonoBehaviour {
 	}
 
 	public void SetInactive(){
+		StartCoroutine (WaitTilActive ());
 		this.gameObject.SetActive (false);
-		inactiveTime = Time.time + respawnTime;
+	}
+
+	IEnumerator WaitTilActive(){
+		yield return new WaitForSeconds (3);
 		this.gameObject.SetActive (true);
 	}
 }
