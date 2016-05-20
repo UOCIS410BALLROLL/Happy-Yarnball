@@ -114,7 +114,7 @@ public class PlayerController : MonoBehaviour {
 			game.AddMorsel();
             audioSource = gameObject.GetComponent<AudioSource>();
             audioSource.Play ();
-			StartCoroutine(GameObject.FindGameObjectWithTag("UIPickup").GetComponent<PickupDisplayer> ().ShowPickup ());
+			StartCoroutine(GameObject.FindGameObjectWithTag("UIPickup").GetComponent<PickupDisplayer> ().ShowPickup (3));
 		}
 		else if (other.gameObject.CompareTag("SpeedUp1"))
 		{
@@ -123,7 +123,7 @@ public class PlayerController : MonoBehaviour {
             isPowered = true;
 			upgrade = powerup.GetPower();
 			powerEnd = Time.time + powerup.GetDuration();
-			StartCoroutine(GameObject.FindGameObjectWithTag("UISpeed").GetComponent<PickupDisplayer> ().ShowPickup ());
+			StartCoroutine(GameObject.FindGameObjectWithTag("UISpeed").GetComponent<PickupDisplayer> ().ShowPickup (powerup.GetDuration()));
 		}
 		else if (other.gameObject.CompareTag("Goal"))
 		{
@@ -135,7 +135,7 @@ public class PlayerController : MonoBehaviour {
             isPowered = true;
 			canDoubleJump = true;
 			powerEnd = Time.time + powerup.GetDuration();
-			StartCoroutine(GameObject.FindGameObjectWithTag("UIDouble").GetComponent<PickupDisplayer> ().ShowPickup ());
+			StartCoroutine(GameObject.FindGameObjectWithTag("UIDouble").GetComponent<PickupDisplayer> ().ShowPickup (powerup.GetDuration()));
 		}
         else if (other.gameObject.CompareTag("Shrink"))
         {
@@ -144,7 +144,7 @@ public class PlayerController : MonoBehaviour {
             isPowered = true;
 			scaleVal = powerup.GetPower();
             rb.transform.localScale = new Vector3(scaleVal, scaleVal, scaleVal);
-			StartCoroutine(GameObject.FindGameObjectWithTag("UIShrink").GetComponent<PickupDisplayer> ().ShowPickup ());
+			StartCoroutine(GameObject.FindGameObjectWithTag("UIShrink").GetComponent<PickupDisplayer> ().ShowPickup (powerup.GetDuration()));
 			powerEnd = Time.time + powerup.GetDuration();
         }
         

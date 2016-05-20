@@ -17,17 +17,17 @@ public class PickupDisplayer : MonoBehaviour {
 	}
 
 	[SerializeField]
-	public IEnumerator ShowPickup() {
+	public IEnumerator ShowPickup(float length) {
 		if (isPowerup) {
 			GetComponent<MeshRenderer> ().enabled = true;
-			yield return new WaitForSeconds (3);
+			yield return new WaitForSeconds (length);
 			GetComponent<MeshRenderer> ().enabled = false;
 		} else {
 			SkinnedMeshRenderer[] meshes = GetComponentsInChildren<SkinnedMeshRenderer> ();
 			for (int i = 0; i < meshes.Length; i++) {
 				meshes [i].enabled = true;
 			}
-			yield return new WaitForSeconds (3);
+			yield return new WaitForSeconds (length);
 			for (int i = 0; i < meshes.Length; i++) {
 				meshes [i].enabled = false;
 			}
