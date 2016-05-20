@@ -428,7 +428,6 @@ Prefab:
       propertyPath: audioSource
       value: 
       objectReference: {fileID: 1983170829}
-<<<<<<< HEAD
     - target: {fileID: 8262424, guid: e2073bf531597484582e70ff5430f394, type: 2}
       propertyPath: m_PlayOnAwake
       value: 0
@@ -436,11 +435,6 @@ Prefab:
     - target: {fileID: 8262424, guid: e2073bf531597484582e70ff5430f394, type: 2}
       propertyPath: Loop
       value: 0
-=======
-    - target: {fileID: 0}
-      propertyPath: m_RootOrder
-      value: 2
->>>>>>> 22c9ef12e9ba61c12db5614463e2ad9238ad3097
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e2073bf531597484582e70ff5430f394, type: 2}
