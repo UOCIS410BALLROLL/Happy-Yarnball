@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour {
 	private Rigidbody rb;
     private GameController game;
 	private AudioSource audioSource;
+    private AudioClip audioClip;
 	private bool isJumping, isPowered, canDoubleJump, hasDoubleJumped;
 	private bool touchedLava;
 	private float jumpHeight;
@@ -109,7 +110,8 @@ public class PlayerController : MonoBehaviour {
 		{
 			other.gameObject.SetActive (false);
 			game.AddMorsel();
-			audioSource.Play ();
+            audioSource = gameObject.GetComponent<AudioSource>();
+            audioSource.Play ();
 		}
 		else if (other.gameObject.CompareTag("SpeedUp1"))
 		{
@@ -118,7 +120,8 @@ public class PlayerController : MonoBehaviour {
 			isPowered = true;
 			upgrade = powerup.GetPower();
 			powerEnd = Time.time + powerup.GetDuration();
-			audioSource.Play ();
+            audioSource = gameObject.GetComponent<AudioSource>();
+            audioSource.Play();
 		}
 		else if (other.gameObject.CompareTag("Goal"))
 		{
@@ -130,6 +133,8 @@ public class PlayerController : MonoBehaviour {
 			isPowered = true;
 			canDoubleJump = true;
 			powerEnd = Time.time + powerup.GetDuration();
+            audioSource = gameObject.GetComponent<AudioSource>();
+            audioSource.Play();
 		}
         else if (other.gameObject.CompareTag("Shrink"))
         {
@@ -139,6 +144,8 @@ public class PlayerController : MonoBehaviour {
 			scaleVal = powerup.GetPower();
             rb.transform.localScale = new Vector3(scaleVal, scaleVal, scaleVal);
 			powerEnd = Time.time + powerup.GetDuration();
+            audioSource = gameObject.GetComponent<AudioSource>();
+            audioSource.Play();
         }
         
     }
