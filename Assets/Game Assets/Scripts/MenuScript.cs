@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class MenuScript : MonoBehaviour {
 
@@ -16,4 +17,9 @@ public class MenuScript : MonoBehaviour {
 	public void ResetData(){
 		PlayerPrefs.DeleteAll ();
 	}
+
+	public void LoadMenu(){
+			SceneManager.LoadScene (0);
+	}
+
 }
