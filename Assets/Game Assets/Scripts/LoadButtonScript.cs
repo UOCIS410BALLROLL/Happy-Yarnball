@@ -31,11 +31,14 @@ public class LoadButtonScript : MonoBehaviour {
 
 	public void LoadLevel(int levelNum){
 		if (unlocked) {
+			PlayerPrefs.SetString ("PlayType", "Once");
+			PlayerPrefs.Save ();
 			SceneManager.LoadScene (levelNum);
 		}
 	}
 
 	public void NewGame(){
+		PlayerPrefs.SetString ("PlayType", "All");
 		SceneManager.LoadScene (1);
 	}
 }
