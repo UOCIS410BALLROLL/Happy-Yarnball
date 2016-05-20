@@ -104,6 +104,10 @@ Material:
         second: 0.078125
       data:
         first:
+          name: _Emission
+        second: 1
+      data:
+        first:
           name: _Parallax
         second: 0.02
       data:
@@ -138,10 +142,6 @@ Material:
         first:
           name: _Metallic
         second: 0
-      data:
-        first:
-          name: _Emission
-        second: 1
       data:
         first:
           name: _EmissionScaleUI
