@@ -17,6 +17,7 @@ TagManager:
   - UIShrink
   - UISpeed
   - CatSkin
+  - FillColor
   layers:
   - Default
   - TransparentFX
