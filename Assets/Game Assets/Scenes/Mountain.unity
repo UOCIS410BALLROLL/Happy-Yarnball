@@ -15,9 +15,9 @@ RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 6
   m_Fog: 1
-  m_FogColor: {r: 0.5, g: 0.25490198, b: 0.25490198, a: 1}
+  m_FogColor: {r: 0.5441177, g: 0.22804932, b: 0.22804932, a: 1}
   m_FogMode: 3
-  m_FogDensity: 0.01
+  m_FogDensity: 0.015
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
@@ -568,7 +568,7 @@ ParticleSystem:
     serializedVersion: 2
     enabled: 1
     startLifetime:
-      scalar: 150
+      scalar: 100
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -732,7 +732,7 @@ ParticleSystem:
         rgba: 4280232261
       minMaxState: 0
     startSize:
-      scalar: 0.22
+      scalar: 0.12
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -900,7 +900,7 @@ ParticleSystem:
     serializedVersion: 2
     m_Type: 0
     rate:
-      scalar: 250
+      scalar: 150
       maxCurve:
         serializedVersion: 2
         m_Curve:
