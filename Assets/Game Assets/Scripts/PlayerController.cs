@@ -9,9 +9,11 @@ public class PlayerController : MonoBehaviour {
 	public float lavaSinkMaxAngularVelocity;
 
 	private Rigidbody rb;
+    private MeshRenderer rend;
+    private Collider coll;
     private GameController game;
 	private AudioSource audioSource;
-    private AudioClip audioClip;
+    private AudioSource powerupSound;
 	private bool isJumping, isPowered, canDoubleJump, hasDoubleJumped;
 	private bool touchedLava;
 	private float jumpHeight;
@@ -115,37 +117,54 @@ public class PlayerController : MonoBehaviour {
 		}
 		else if (other.gameObject.CompareTag("SpeedUp1"))
 		{
-			UpgradeController powerup = (UpgradeController) other.gameObject.GetComponent("UpgradeController");
-			powerup.SetInactive ();
-			isPowered = true;
+            
+            UpgradeController powerup = (UpgradeController) other.gameObject.GetComponent("UpgradeController");
+            rend = other.gameObject.GetComponent<MeshRenderer>();
+            coll = other.gameObject.GetComponent<Collider>();
+            rend.enabled = false;
+            coll.enabled = false;
+            powerupSound = other.gameObject.GetComponent<AudioSource>();
+            powerupSound.Play();
+            //powerup.SetInactive ();
+            isPowered = true;
 			upgrade = powerup.GetPower();
 			powerEnd = Time.time + powerup.GetDuration();
-            audioSource = gameObject.GetComponent<AudioSource>();
-            audioSource.Play();
+            
+            
 		}
 		else if (other.gameObject.CompareTag("Goal"))
 		{
 			game.ExitReached();
 		}
 		else if(other.gameObject.CompareTag("DoubleJump")) {
-			UpgradeController powerup = (UpgradeController) other.gameObject.GetComponent("UpgradeController");
-			powerup.SetInactive ();
-			isPowered = true;
+            UpgradeController powerup = (UpgradeController)other.gameObject.GetComponent("UpgradeController");
+            rend = other.gameObject.GetComponent<MeshRenderer>();
+            coll = other.gameObject.GetComponent<Collider>();
+            rend.enabled = false;
+            coll.enabled = false;
+            powerupSound = other.gameObject.GetComponent<AudioSource>();
+            powerupSound.Play();
+            //powerup.SetInactive ();
+            isPowered = true;
 			canDoubleJump = true;
 			powerEnd = Time.time + powerup.GetDuration();
-            audioSource = gameObject.GetComponent<AudioSource>();
-            audioSource.Play();
+            
+            
 		}
         else if (other.gameObject.CompareTag("Shrink"))
         {
-			UpgradeController powerup = (UpgradeController) other.gameObject.GetComponent("UpgradeController");
-			powerup.SetInactive ();
+            UpgradeController powerup = (UpgradeController) other.gameObject.GetComponent("UpgradeController");
+            rend = other.gameObject.GetComponent<MeshRenderer>();
+            coll = other.gameObject.GetComponent<Collider>();
+            rend.enabled = false;
+            coll.enabled = false;
+            powerupSound = other.gameObject.GetComponent<AudioSource>();
+            powerupSound.Play();
+            //powerup.SetInactive ();
             isPowered = true;
 			scaleVal = powerup.GetPower();
             rb.transform.localScale = new Vector3(scaleVal, scaleVal, scaleVal);
-			powerEnd = Time.time + powerup.GetDuration();
-            audioSource = gameObject.GetComponent<AudioSource>();
-            audioSource.Play();
+			powerEnd = Time.time + powerup.GetDuration(); 
         }
         
     }
