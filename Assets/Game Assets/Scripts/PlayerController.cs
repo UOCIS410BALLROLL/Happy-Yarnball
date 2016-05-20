@@ -112,6 +112,7 @@ public class PlayerController : MonoBehaviour {
 			game.AddMorsel();
             audioSource = gameObject.GetComponent<AudioSource>();
             audioSource.Play ();
+			StartCoroutine(GameObject.FindGameObjectWithTag("UIPickup").GetComponent<PickupDisplayer> ().ShowPickup ());
 		}
 		else if (other.gameObject.CompareTag("SpeedUp1"))
 		{
@@ -121,7 +122,8 @@ public class PlayerController : MonoBehaviour {
 			upgrade = powerup.GetPower();
 			powerEnd = Time.time + powerup.GetDuration();
             audioSource = gameObject.GetComponent<AudioSource>();
-            audioSource.Play();
+			audioSource.Play();
+			StartCoroutine(GameObject.FindGameObjectWithTag("UISpeed").GetComponent<PickupDisplayer> ().ShowPickup ());
 		}
 		else if (other.gameObject.CompareTag("Goal"))
 		{
@@ -134,7 +136,8 @@ public class PlayerController : MonoBehaviour {
 			canDoubleJump = true;
 			powerEnd = Time.time + powerup.GetDuration();
             audioSource = gameObject.GetComponent<AudioSource>();
-            audioSource.Play();
+			audioSource.Play();
+			StartCoroutine(GameObject.FindGameObjectWithTag("UIDouble").GetComponent<PickupDisplayer> ().ShowPickup ());
 		}
         else if (other.gameObject.CompareTag("Shrink"))
         {
@@ -145,7 +148,8 @@ public class PlayerController : MonoBehaviour {
             rb.transform.localScale = new Vector3(scaleVal, scaleVal, scaleVal);
 			powerEnd = Time.time + powerup.GetDuration();
             audioSource = gameObject.GetComponent<AudioSource>();
-            audioSource.Play();
+			audioSource.Play();
+			StartCoroutine(GameObject.FindGameObjectWithTag("UIShrink").GetComponent<PickupDisplayer> ().ShowPickup ());
         }
         
     }
