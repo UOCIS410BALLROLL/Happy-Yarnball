@@ -9,6 +9,7 @@ public class CameraController : MonoBehaviour {
     public float start_x, start_y, start_z;
     public float max_angle;
     public float min_angle;
+	public LayerMask layermask;
 
     private GameObject player;
     private Vector3 target_pos;
@@ -61,8 +62,6 @@ public class CameraController : MonoBehaviour {
 	
 	float GetCameraDistance(Vector3 direction) {
 		RaycastHit hit;
-		int layermask = 1 << 2;
-		layermask = ~layermask;
 		return Physics.SphereCast(player.transform.position, 0.3f, direction, out hit, maxDistance, layermask) ? hit.distance : maxDistance;
 	}
 
