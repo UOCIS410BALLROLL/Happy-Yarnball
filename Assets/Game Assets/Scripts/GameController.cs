@@ -34,7 +34,7 @@ public class GameController : MonoBehaviour {
     {
         morselCount = 0;
         totalMorsels = GameObject.FindGameObjectsWithTag("Cat").Length;
-        morselText.text = string.Format("{0}/{1}", morselCount, totalMorsels);
+        morselText.text = string.Format("{0}/{1} Cats", morselCount, totalMorsels);
         minMorsels = Mathf.Clamp(minMorsels, 0, totalMorsels);
         gameOver = false;
 		endLevel = false;
@@ -181,7 +181,7 @@ public class GameController : MonoBehaviour {
     }
     void UpdateUI()
     {
-        morselText.text = string.Format("{0}/{1}", morselCount, totalMorsels);
+        morselText.text = string.Format("{0}/{1} Cats", morselCount, totalMorsels);
     }
 
     [SerializeField]
