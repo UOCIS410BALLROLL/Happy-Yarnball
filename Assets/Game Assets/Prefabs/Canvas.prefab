@@ -359,9 +359,10 @@ GameObject:
   - 23: {fileID: 2335288}
   - 114: {fileID: 11488950}
   - 54: {fileID: 5444540}
+  - 114: {fileID: 11464198}
   m_Layer: 10
   m_Name: UIShrink
-  m_TagString: Shrink
+  m_TagString: UIShrink
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -424,9 +425,10 @@ GameObject:
   - 65: {fileID: 6592760}
   - 54: {fileID: 5439392}
   - 114: {fileID: 11435152}
+  - 114: {fileID: 11437474}
   m_Layer: 10
   m_Name: UIDouble
-  m_TagString: DoubleJump
+  m_TagString: UIDouble
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1337,9 +1339,10 @@ GameObject:
   - 136: {fileID: 13639950}
   - 54: {fileID: 5477158}
   - 114: {fileID: 11433136}
+  - 114: {fileID: 11475028}
   m_Layer: 10
   m_Name: UIPickup
-  m_TagString: Untagged
+  m_TagString: UIPickup
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1385,7 +1388,7 @@ GameObject:
   - 137: {fileID: 13752046}
   m_Layer: 10
   m_Name: kitt_Body1
-  m_TagString: Untagged
+  m_TagString: CatSkin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1670,9 +1673,10 @@ GameObject:
   - 64: {fileID: 6483874}
   - 54: {fileID: 5473974}
   - 114: {fileID: 11492794}
+  - 114: {fileID: 11441470}
   m_Layer: 10
   m_Name: UISpeed
-  m_TagString: SpeedUp1
+  m_TagString: UISpeed
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4062,6 +4066,28 @@ MonoBehaviour:
   speed: 100
   horizontalRotate: 1
   verticalRotate: 0
+--- !u!114 &11437474
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 124456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 043763272ffe93a4bac7d9541529eded, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &11441470
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 180718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 043763272ffe93a4bac7d9541529eded, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11442738
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4080,6 +4106,17 @@ MonoBehaviour:
   m_InputActionsPerSecond: 10
   m_RepeatDelay: 0.5
   m_ForceModuleActive: 0
+--- !u!114 &11464198
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 118764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 043763272ffe93a4bac7d9541529eded, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11467098
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4148,6 +4185,17 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Timer Text
+--- !u!114 &11475028
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 168932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 043763272ffe93a4bac7d9541529eded, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11485690
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4962,7 +5010,7 @@ RectTransform:
   m_LocalScale: {x: 150, y: 100, z: 75}
   m_Children: []
   m_Father: {fileID: 22490198}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: -247.49997, y: 163.22}
@@ -5024,7 +5072,7 @@ RectTransform:
   - {fileID: 411392}
   - {fileID: 498290}
   m_Father: {fileID: 22490198}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: -308.33997, y: 153.96985}
@@ -5040,9 +5088,9 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 22473922}
   - {fileID: 22496776}
   - {fileID: 22429348}
-  - {fileID: 22473922}
   - {fileID: 22428112}
   m_Father: {fileID: 22439218}
   m_RootOrder: 6
@@ -5062,7 +5110,7 @@ RectTransform:
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children: []
   m_Father: {fileID: 22490198}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: -276.14, y: 163.2}
