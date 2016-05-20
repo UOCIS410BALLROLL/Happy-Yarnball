@@ -19,6 +19,7 @@ public class GameController : MonoBehaviour {
 
 	float currentTime = 0.0f; //here
 
+	private string levelName;
     private int totalMorsels;
     private int morselCount;
     private bool gameOver;
@@ -40,6 +41,7 @@ public class GameController : MonoBehaviour {
         cam.GetComponent<CameraController>().SetPlayer(player);
         StartCoroutine(StartLevelMessage());
 		displayingMessage = false;
+		levelName = SceneManager.GetActiveScene ().name;
 
 //		desertSound = GetComponent<AudioSource> ();
 
@@ -137,6 +139,8 @@ public class GameController : MonoBehaviour {
     IEnumerator LevelComplete()
     {
 		alertText.text = string.Format("Level Complete in {0} Seconds, you got {1}/3 stars!", currentTime, GetStars());
+		PlayerPrefs.SetInt (string.Format ("{0}-Stars", levelName), GetStars ());
+		PlayerPrefs.SetFloat (string.Format ("{0}-Time", levelName), currentTime);
         player.GetComponent<Rigidbody>().isKinematic = true;
         yield return new WaitForSeconds(2);
         alertText.text = "\n" + alertText.text + "\nPress Any Key to go to the next level";
