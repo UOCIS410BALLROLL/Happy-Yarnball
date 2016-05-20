@@ -212,6 +212,12 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 451496, guid: f49b82058898f6b4da01856d6bdb8d92, type: 2}
   m_PrefabInternal: {fileID: 184192225}
+--- !u!114 &214561251 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11499190, guid: d85c229f6d6c67e4cb6c4f7db88e385b,
+    type: 2}
+  m_PrefabInternal: {fileID: 1992038035}
+  m_Script: {fileID: 1392445389, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
 --- !u!1001 &241562833
 Prefab:
   m_ObjectHideFlags: 0
@@ -270,6 +276,12 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b2cbd2ec06465274aa0aba46d00df4f7, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &336660725 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11474630, guid: d85c229f6d6c67e4cb6c4f7db88e385b,
+    type: 2}
+  m_PrefabInternal: {fileID: 1992038035}
+  m_Script: {fileID: 1392445389, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
 --- !u!4 &377298577 stripped
 Transform:
   m_PrefabParentObject: {fileID: 408278, guid: 87d7c3d1afa924044b5dc18aca6136f4, type: 2}
@@ -538,6 +550,12 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 491076, guid: d2bb8296c2fea4f44a9d151466f87b4c, type: 2}
   m_PrefabInternal: {fileID: 775402173}
+--- !u!114 &810136717 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11438826, guid: d85c229f6d6c67e4cb6c4f7db88e385b,
+    type: 2}
+  m_PrefabInternal: {fileID: 1992038035}
+  m_Script: {fileID: 1392445389, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
 --- !u!1001 &832287649
 Prefab:
   m_ObjectHideFlags: 0
@@ -873,6 +891,18 @@ Prefab:
       propertyPath: jumpHeight
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 11414128, guid: e86b04a9d10335a49bcddacaa1b3382a, type: 2}
+      propertyPath: nextLevel
+      value: 
+      objectReference: {fileID: 336660725}
+    - target: {fileID: 11414128, guid: e86b04a9d10335a49bcddacaa1b3382a, type: 2}
+      propertyPath: restartLevel
+      value: 
+      objectReference: {fileID: 214561251}
+    - target: {fileID: 11414128, guid: e86b04a9d10335a49bcddacaa1b3382a, type: 2}
+      propertyPath: mainMenu
+      value: 
+      objectReference: {fileID: 810136717}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e86b04a9d10335a49bcddacaa1b3382a, type: 2}
   m_IsPrefabParent: 0

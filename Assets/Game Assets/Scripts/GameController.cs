@@ -18,6 +18,11 @@ public class GameController : MonoBehaviour {
 	public int goalTime;
 	public float jumpHeight;
 
+	public Button nextLevel;
+	public Button restartLevel;
+	public Button mainMenu;
+
+
 	float currentTime = 0.0f; //here
 
 	private string levelName;
@@ -46,6 +51,9 @@ public class GameController : MonoBehaviour {
 		displayingMessage = false;
 		levelName = SceneManager.GetActiveScene ().name;
 
+		nextLevel.gameObject.SetActive (false);
+		mainMenu.gameObject.SetActive (false);
+		restartLevel.gameObject.SetActive (false);
 //		desertSound = GetComponent<AudioSource> ();
 
     }
@@ -146,9 +154,9 @@ public class GameController : MonoBehaviour {
 		}
 	}
 
-    IEnumerator LevelComplete()
+    void LevelComplete()
     {
-		alertText.text = string.Format("Level Complete in {0} Seconds, you got {1}/3 stars!", currentTime, GetStars());
+		//alertText.text = string.Format("Level Complete in {0} Seconds, you got {1}/3 stars!", currentTime, GetStars());
 		endLevel = true;
 
 		if(GetStars() > PlayerPrefs.GetInt(string.Format ("{0}-Stars", levelName))) {
@@ -161,14 +169,27 @@ public class GameController : MonoBehaviour {
 		PlayerPrefs.Save ();
 
         player.GetComponent<Rigidbody>().isKinematic = true;
-        yield return new WaitForSeconds(2);
-        alertText.text = "\n" + alertText.text + "\nPress Any Key to go to the next level";
-		if (PlayerPrefs.GetString ("PlayType").CompareTo ("Once") == 0) {
-			SceneManager.LoadScene ("Menu");
-		} else {
-			SceneManager.LoadScene (SceneManager.GetActiveScene ().buildIndex + 1);
-		}
+		nextLevel.gameObject.SetActive (true);
+		mainMenu.gameObject.SetActive (true);
+		restartLevel.gameObject.SetActive (true);
     }
+
+	public void NextLevel()
+	{
+		SceneManager.LoadScene (SceneManager.GetActiveScene ().buildIndex+1);
+	}
+
+	public void MainMenu()
+	{
+		SceneManager.LoadScene (0);
+	}
+
+	public void RestartLevel()
+	{
+		SceneManager.LoadScene (SceneManager.GetActiveScene ().buildIndex);
+	}
+
+
 	public int GetStars()
 	{
 		if (morselCount >= totalMorsels) 
@@ -208,7 +229,7 @@ public class GameController : MonoBehaviour {
     {
         if (morselCount >= minMorsels)
         {
-            StartCoroutine(LevelComplete());
+			LevelComplete ();
         }
         else if (!displayingMessage)
         {
