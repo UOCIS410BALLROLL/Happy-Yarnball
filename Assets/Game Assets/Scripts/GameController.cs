@@ -12,16 +12,20 @@ public class GameController : MonoBehaviour {
     public Text morselText;
     public Text alertText;
 	public Text timerText;
+	public Texture[] starTextures;
 	public bool cheatsEnabled; // set True for development, False for testing (maybe easter egg way to enable)
     public int minMorsels;
 	public int goalTime;
 	public float jumpHeight;
+
+	public int s1,s2,s3,s4;
 
 	float currentTime = 0.0f; //here
 
 	private string levelName;
     private int totalMorsels;
     private int morselCount;
+	private bool endLevel;
     private bool gameOver;
 	private bool displayingMessage;
     private GameObject cam;
@@ -35,6 +39,7 @@ public class GameController : MonoBehaviour {
         morselText.text = string.Format("{0}/{1} Cats", morselCount, totalMorsels);
         minMorsels = Mathf.Clamp(minMorsels, 0, totalMorsels);
         gameOver = false;
+		endLevel = false;
         player = Instantiate(player, new Vector3(start_x, start_y, start_z), player.transform.rotation) as GameObject;
 		player.GetComponent<PlayerController> ().SetJumpHeight (jumpHeight);
         cam = GameObject.FindGameObjectWithTag("MainCamera");
@@ -46,6 +51,13 @@ public class GameController : MonoBehaviour {
 //		desertSound = GetComponent<AudioSource> ();
 
     }
+
+	void OnGUI(){
+		if (endLevel) {
+			int stars = GetStars ();
+			GUI.DrawTexture (new Rect (250, 150, 300, 200), starTextures[stars-1], ScaleMode.StretchToFill, true, 40.0F);
+		}
+	}
 
     void Update()
     {
@@ -139,6 +151,7 @@ public class GameController : MonoBehaviour {
     IEnumerator LevelComplete()
     {
 		alertText.text = string.Format("Level Complete in {0} Seconds, you got {1}/3 stars!", currentTime, GetStars());
+		endLevel = true;
 
 		if(GetStars() > PlayerPrefs.GetInt(string.Format ("{0}-Stars", levelName))) {
 			PlayerPrefs.SetInt (string.Format ("{0}-Stars", levelName), GetStars ());
@@ -147,11 +160,16 @@ public class GameController : MonoBehaviour {
 		else if(GetStars() == PlayerPrefs.GetInt(string.Format ("{0}-Stars", levelName))) {
 			PlayerPrefs.SetFloat (string.Format ("{0}-Time", levelName), Mathf.Min(currentTime, PlayerPrefs.GetFloat(string.Format ("{0}-Time", levelName))));
 		}
+		PlayerPrefs.Save ();
 
         player.GetComponent<Rigidbody>().isKinematic = true;
         yield return new WaitForSeconds(2);
         alertText.text = "\n" + alertText.text + "\nPress Any Key to go to the next level";
-		SceneManager.LoadScene (SceneManager.GetActiveScene ().buildIndex+1);
+		if (PlayerPrefs.GetString ("PlayType").CompareTo ("Once") == 0) {
+			SceneManager.LoadScene ("Menu");
+		} else {
+			SceneManager.LoadScene (SceneManager.GetActiveScene ().buildIndex + 1);
+		}
     }
 	public int GetStars()
 	{

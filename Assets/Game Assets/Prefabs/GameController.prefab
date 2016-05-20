@@ -46,9 +46,18 @@ MonoBehaviour:
   morselText: {fileID: 0}
   alertText: {fileID: 0}
   timerText: {fileID: 0}
-  cheatsEnabled: 0
+  starTextures:
+  - {fileID: 2800000, guid: caa9a33861ed506479388f097c7fdb36, type: 3}
+  - {fileID: 2800000, guid: af8d2650a5562694c895582746447e12, type: 3}
+  - {fileID: 2800000, guid: 52f4d149c06352d49b191816a44ee2cd, type: 3}
+  cheatsEnabled: 1
   minMorsels: 0
   goalTime: 100
+  jumpHeight: 0
+  s1: 250
+  s2: 150
+  s3: 300
+  s4: 200
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

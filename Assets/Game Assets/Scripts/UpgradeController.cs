@@ -10,12 +10,16 @@ public class UpgradeController : MonoBehaviour {
 	private float inactiveTime;
 	// Use this for initialization
 	void Start () {
-		inactiveTime = Time.time;
+		inactiveTime = 0;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-
+		if (inactiveTime != 0 && Time.time > inactiveTime) {
+			inactiveTime = 0;
+			this.gameObject.GetComponent<Collider> ().enabled = true;
+			this.gameObject.GetComponent<Renderer> ().enabled = true;
+		}
 	}
 
 	public float GetDuration(){
@@ -27,12 +31,10 @@ public class UpgradeController : MonoBehaviour {
 	}
 
 	public void SetInactive(){
-		StartCoroutine (WaitTilActive ());
-		this.gameObject.SetActive (false);
+		this.gameObject.GetComponent<Collider> ().enabled = false;
+		this.gameObject.GetComponent<Renderer> ().enabled = false;
+		this.gameObject.GetComponent<AudioSource> ().Play ();
+		inactiveTime = Time.time + respawnTime;
 	}
 
-	IEnumerator WaitTilActive(){
-		yield return new WaitForSeconds (3);
-		this.gameObject.SetActive (true);
-	}
 }

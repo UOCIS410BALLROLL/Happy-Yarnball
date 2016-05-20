@@ -12,6 +12,12 @@ TagManager:
   - Shrink
   - Terrain
   - Lava
+  - UIPickup
+  - UIDouble
+  - UIShrink
+  - UISpeed
+  - CatSkin
+  - FillColor
   layers:
   - Default
   - TransparentFX

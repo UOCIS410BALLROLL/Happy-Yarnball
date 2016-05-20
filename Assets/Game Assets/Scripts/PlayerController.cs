@@ -9,9 +9,11 @@ public class PlayerController : MonoBehaviour {
 	public float lavaSinkMaxAngularVelocity;
 
 	private Rigidbody rb;
+    private MeshRenderer rend;
+    private Collider coll;
     private GameController game;
 	private AudioSource audioSource;
-    private AudioClip audioClip;
+    private AudioSource powerupSound;
 	private bool isJumping, isPowered, canDoubleJump, hasDoubleJumped;
 	private bool touchedLava;
 	private float jumpHeight;
@@ -48,15 +50,7 @@ public class PlayerController : MonoBehaviour {
 		isJumping = false;
 	}
 
-	void FixedUpdate ()
-	{
-		if(touchedLava) {
-			return;
-		}
-		
-		float moveHorizontal = Input.GetAxis("Horizontal");
-        float moveVertical = Input.GetAxis("Vertical");
-
+	void Update() {
 		if (!isJumping && isGrounded() && Input.GetKeyDown ("space"))
 		{
 			isJumping = true;
@@ -69,6 +63,16 @@ public class PlayerController : MonoBehaviour {
 			hasDoubleJumped = true;
 			rb.velocity = new Vector3(rb.velocity.x, jumpHeight, rb.velocity.z);
 		}
+	}
+
+	void FixedUpdate ()
+	{
+		if(touchedLava) {
+			return;
+		}
+		
+		float moveHorizontal = Input.GetAxis("Horizontal");
+        float moveVertical = Input.GetAxis("Vertical");
 		
 		if (isPowered) {
 			if (Time.time > powerEnd) {
@@ -112,40 +116,38 @@ public class PlayerController : MonoBehaviour {
 			game.AddMorsel();
             audioSource = gameObject.GetComponent<AudioSource>();
             audioSource.Play ();
+			StartCoroutine(GameObject.FindGameObjectWithTag("UIPickup").GetComponent<PickupDisplayer> ().ShowPickup (3));
 		}
 		else if (other.gameObject.CompareTag("SpeedUp1"))
 		{
-			UpgradeController powerup = (UpgradeController) other.gameObject.GetComponent("UpgradeController");
-			powerup.SetInactive ();
-			isPowered = true;
+            UpgradeController powerup = (UpgradeController) other.gameObject.GetComponent("UpgradeController");
+            powerup.SetInactive ();
+            isPowered = true;
 			upgrade = powerup.GetPower();
 			powerEnd = Time.time + powerup.GetDuration();
-            audioSource = gameObject.GetComponent<AudioSource>();
-            audioSource.Play();
+			StartCoroutine(GameObject.FindGameObjectWithTag("UISpeed").GetComponent<PickupDisplayer> ().ShowPickup (powerup.GetDuration()));
 		}
 		else if (other.gameObject.CompareTag("Goal"))
 		{
 			game.ExitReached();
 		}
 		else if(other.gameObject.CompareTag("DoubleJump")) {
-			UpgradeController powerup = (UpgradeController) other.gameObject.GetComponent("UpgradeController");
-			powerup.SetInactive ();
-			isPowered = true;
+            UpgradeController powerup = (UpgradeController)other.gameObject.GetComponent("UpgradeController");
+            powerup.SetInactive ();
+            isPowered = true;
 			canDoubleJump = true;
 			powerEnd = Time.time + powerup.GetDuration();
-            audioSource = gameObject.GetComponent<AudioSource>();
-            audioSource.Play();
+			StartCoroutine(GameObject.FindGameObjectWithTag("UIDouble").GetComponent<PickupDisplayer> ().ShowPickup (powerup.GetDuration()));
 		}
         else if (other.gameObject.CompareTag("Shrink"))
         {
-			UpgradeController powerup = (UpgradeController) other.gameObject.GetComponent("UpgradeController");
-			powerup.SetInactive ();
+            UpgradeController powerup = (UpgradeController) other.gameObject.GetComponent("UpgradeController");
+            powerup.SetInactive ();
             isPowered = true;
 			scaleVal = powerup.GetPower();
             rb.transform.localScale = new Vector3(scaleVal, scaleVal, scaleVal);
+			StartCoroutine(GameObject.FindGameObjectWithTag("UIShrink").GetComponent<PickupDisplayer> ().ShowPickup (powerup.GetDuration()));
 			powerEnd = Time.time + powerup.GetDuration();
-            audioSource = gameObject.GetComponent<AudioSource>();
-            audioSource.Play();
         }
         
     }
