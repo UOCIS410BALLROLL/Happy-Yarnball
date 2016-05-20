@@ -18,7 +18,8 @@ public class GenerateVolcano : MonoBehaviour {
 		int h = tdata.heightmapHeight;
 		int w = tdata.heightmapWidth;
 		float[,] data = new float[h, w];
-		using (System.IO.FileStream file = System.IO.File.OpenRead("Assets/Resources/TerrainHeightMaps/terrain_windows.raw"))
+
+		using (System.IO.FileStream file = System.IO.File.OpenRead(Application.streamingAssetsPath + "/TerrainHeightMaps/terrain_windows.raw"))
 		using (System.IO.BinaryReader reader = new System.IO.BinaryReader(file))
 		{
 			for (int y = 0; y < h; y++)
