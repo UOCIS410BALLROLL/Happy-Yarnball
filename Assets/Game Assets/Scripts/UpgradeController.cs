@@ -1,12 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+using UnityEngine.UI;
 public class UpgradeController : MonoBehaviour {
 
 	public float upgradeDuration; //Amount of time the upgrade lasts
 	public float upgradePower; //"Power" of the upgrade
 	public float respawnTime; //Length of time in seconds before upgrade respawns
-
+	public Text alertText;
+	public string powerUp;
 	private float inactiveTime;
 	// Use this for initialization
 	void Start () {
@@ -19,6 +20,7 @@ public class UpgradeController : MonoBehaviour {
 			inactiveTime = 0;
 			this.gameObject.GetComponent<Collider> ().enabled = true;
 			this.gameObject.GetComponent<Renderer> ().enabled = true;
+			alertText.text = " ";
 		}
 	}
 
@@ -34,6 +36,7 @@ public class UpgradeController : MonoBehaviour {
 		this.gameObject.GetComponent<Collider> ().enabled = false;
 		this.gameObject.GetComponent<Renderer> ().enabled = false;
 		this.gameObject.GetComponent<AudioSource> ().Play ();
+		alertText.text = powerUp;
 		inactiveTime = Time.time + respawnTime;
 	}
 

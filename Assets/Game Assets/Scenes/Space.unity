@@ -382,6 +382,14 @@ Prefab:
       propertyPath: horizontalRotate
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11462914, guid: d2bb8296c2fea4f44a9d151466f87b4c, type: 2}
+      propertyPath: alertText
+      value: 
+      objectReference: {fileID: 493761030}
+    - target: {fileID: 11462914, guid: d2bb8296c2fea4f44a9d151466f87b4c, type: 2}
+      propertyPath: powerUp
+      value: Double Jump
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d2bb8296c2fea4f44a9d151466f87b4c, type: 2}
   m_IsPrefabParent: 0
@@ -481,6 +489,14 @@ Prefab:
     - target: {fileID: 11468934, guid: d2bb8296c2fea4f44a9d151466f87b4c, type: 2}
       propertyPath: horizontalRotate
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11462914, guid: d2bb8296c2fea4f44a9d151466f87b4c, type: 2}
+      propertyPath: alertText
+      value: 
+      objectReference: {fileID: 493761030}
+    - target: {fileID: 11462914, guid: d2bb8296c2fea4f44a9d151466f87b4c, type: 2}
+      propertyPath: powerUp
+      value: Double Jump
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d2bb8296c2fea4f44a9d151466f87b4c, type: 2}
@@ -2055,6 +2071,14 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11423972, guid: b2cbd2ec06465274aa0aba46d00df4f7, type: 2}
+      propertyPath: alertText
+      value: 
+      objectReference: {fileID: 493761030}
+    - target: {fileID: 11423972, guid: b2cbd2ec06465274aa0aba46d00df4f7, type: 2}
+      propertyPath: powerUp
+      value: Speed Boost
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b2cbd2ec06465274aa0aba46d00df4f7, type: 2}
   m_IsPrefabParent: 0
@@ -2286,6 +2310,14 @@ Prefab:
       propertyPath: horizontalRotate
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11462914, guid: d2bb8296c2fea4f44a9d151466f87b4c, type: 2}
+      propertyPath: powerUp
+      value: Double Jump
+      objectReference: {fileID: 0}
+    - target: {fileID: 11462914, guid: d2bb8296c2fea4f44a9d151466f87b4c, type: 2}
+      propertyPath: alertText
+      value: 
+      objectReference: {fileID: 493761030}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d2bb8296c2fea4f44a9d151466f87b4c, type: 2}
   m_IsPrefabParent: 0

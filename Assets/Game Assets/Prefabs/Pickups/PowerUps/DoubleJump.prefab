@@ -182,6 +182,8 @@ MonoBehaviour:
   upgradeDuration: 5
   upgradePower: 0
   respawnTime: 10
+  alertText: {fileID: 11453248, guid: 3e500966ab1782740b9dd2a242d6a377, type: 2}
+  powerUp: DoubleJump
 --- !u!114 &11468934
 MonoBehaviour:
   m_ObjectHideFlags: 1

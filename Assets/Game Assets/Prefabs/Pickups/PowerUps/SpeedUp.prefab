@@ -165,6 +165,8 @@ MonoBehaviour:
   upgradeDuration: 5
   upgradePower: 2.5
   respawnTime: 10
+  alertText: {fileID: 11453248, guid: 3e500966ab1782740b9dd2a242d6a377, type: 2}
+  powerUp: Speed Boost!
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
