@@ -158,11 +158,16 @@ public class GameController : MonoBehaviour {
 		else if(GetStars() == PlayerPrefs.GetInt(string.Format ("{0}-Stars", levelName))) {
 			PlayerPrefs.SetFloat (string.Format ("{0}-Time", levelName), Mathf.Min(currentTime, PlayerPrefs.GetFloat(string.Format ("{0}-Time", levelName))));
 		}
+		PlayerPrefs.Save ();
 
         player.GetComponent<Rigidbody>().isKinematic = true;
         yield return new WaitForSeconds(2);
         alertText.text = "\n" + alertText.text + "\nPress Any Key to go to the next level";
-		SceneManager.LoadScene (SceneManager.GetActiveScene ().buildIndex+1);
+		if (PlayerPrefs.GetString ("PlayType").CompareTo ("Once") == 0) {
+			SceneManager.LoadScene ("Menu");
+		} else {
+			SceneManager.LoadScene (SceneManager.GetActiveScene ().buildIndex + 1);
+		}
     }
 	public int GetStars()
 	{
