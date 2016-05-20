@@ -18,10 +18,6 @@ public class GameController : MonoBehaviour {
 	public int goalTime;
 	public float jumpHeight;
 
-	public Button nextLevel;
-	public Button restartLevel;
-	public Button mainMenu;
-
 	float currentTime = 0.0f; //here
 
 	private string levelName;
@@ -50,9 +46,6 @@ public class GameController : MonoBehaviour {
 		displayingMessage = false;
 		levelName = SceneManager.GetActiveScene ().name;
 
-		nextLevel.gameObject.SetActive (false);
-		mainMenu.gameObject.SetActive (false);
-		restartLevel.gameObject.SetActive (false);
 //		desertSound = GetComponent<AudioSource> ();
 
     }
@@ -153,7 +146,7 @@ public class GameController : MonoBehaviour {
 		}
 	}
 
-    void LevelComplete()
+    IEnumerator LevelComplete()
     {
 		alertText.text = string.Format("Level Complete in {0} Seconds, you got {1}/3 stars!", currentTime, GetStars());
 		endLevel = true;
@@ -167,27 +160,10 @@ public class GameController : MonoBehaviour {
 		}
 
         player.GetComponent<Rigidbody>().isKinematic = true;
-    
-		nextLevel.gameObject.SetActive (true);
-		mainMenu.gameObject.SetActive (true);
-		restartLevel.gameObject.SetActive (true);
-	}
-
-	public void NextLevel()
-	{
+        yield return new WaitForSeconds(2);
+        alertText.text = "\n" + alertText.text + "\nPress Any Key to go to the next level";
 		SceneManager.LoadScene (SceneManager.GetActiveScene ().buildIndex+1);
-	}
-
-	public void MainMenu()
-	{
-		SceneManager.LoadScene (0);
-	}
-
-	public void RestartLevel()
-	{
-		SceneManager.LoadScene (SceneManager.GetActiveScene ().buildIndex);
-	}
-
+    }
 	public int GetStars()
 	{
 		if (morselCount >= totalMorsels) 
@@ -227,7 +203,7 @@ public class GameController : MonoBehaviour {
     {
         if (morselCount >= minMorsels)
         {
-            LevelComplete();
+            StartCoroutine(LevelComplete());
         }
         else if (!displayingMessage)
         {

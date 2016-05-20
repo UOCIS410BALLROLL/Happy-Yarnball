@@ -54,9 +54,10 @@ MonoBehaviour:
   minMorsels: 0
   goalTime: 100
   jumpHeight: 0
-  nextLevel: {fileID: 11446248, guid: dec53bbe8538172459508aa730030147, type: 2}
-  restartLevel: {fileID: 11476646, guid: dec53bbe8538172459508aa730030147, type: 2}
-  mainMenu: {fileID: 11440242, guid: dec53bbe8538172459508aa730030147, type: 2}
+  s1: 250
+  s2: 150
+  s3: 300
+  s4: 200
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
