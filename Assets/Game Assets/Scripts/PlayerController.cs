@@ -118,15 +118,8 @@ public class PlayerController : MonoBehaviour {
 		}
 		else if (other.gameObject.CompareTag("SpeedUp1"))
 		{
-            
             UpgradeController powerup = (UpgradeController) other.gameObject.GetComponent("UpgradeController");
-            rend = other.gameObject.GetComponent<MeshRenderer>();
-            coll = other.gameObject.GetComponent<Collider>();
-            rend.enabled = false;
-            coll.enabled = false;
-            powerupSound = other.gameObject.GetComponent<AudioSource>();
-            powerupSound.Play();
-            //powerup.SetInactive ();
+            powerup.SetInactive ();
             isPowered = true;
 			upgrade = powerup.GetPower();
 			powerEnd = Time.time + powerup.GetDuration();
@@ -138,13 +131,7 @@ public class PlayerController : MonoBehaviour {
 		}
 		else if(other.gameObject.CompareTag("DoubleJump")) {
             UpgradeController powerup = (UpgradeController)other.gameObject.GetComponent("UpgradeController");
-            rend = other.gameObject.GetComponent<MeshRenderer>();
-            coll = other.gameObject.GetComponent<Collider>();
-            rend.enabled = false;
-            coll.enabled = false;
-            powerupSound = other.gameObject.GetComponent<AudioSource>();
-            powerupSound.Play();
-            //powerup.SetInactive ();
+            powerup.SetInactive ();
             isPowered = true;
 			canDoubleJump = true;
 			powerEnd = Time.time + powerup.GetDuration();
@@ -153,13 +140,7 @@ public class PlayerController : MonoBehaviour {
         else if (other.gameObject.CompareTag("Shrink"))
         {
             UpgradeController powerup = (UpgradeController) other.gameObject.GetComponent("UpgradeController");
-            rend = other.gameObject.GetComponent<MeshRenderer>();
-            coll = other.gameObject.GetComponent<Collider>();
-            rend.enabled = false;
-            coll.enabled = false;
-            powerupSound = other.gameObject.GetComponent<AudioSource>();
-            powerupSound.Play();
-            //powerup.SetInactive ();
+            powerup.SetInactive ();
             isPowered = true;
 			scaleVal = powerup.GetPower();
             rb.transform.localScale = new Vector3(scaleVal, scaleVal, scaleVal);
