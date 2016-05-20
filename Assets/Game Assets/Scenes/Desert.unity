@@ -5863,6 +5863,18 @@ Prefab:
       propertyPath: jumpHeight
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 11414128, guid: e86b04a9d10335a49bcddacaa1b3382a, type: 2}
+      propertyPath: onestar
+      value: 
+      objectReference: {fileID: 2800000, guid: caa9a33861ed506479388f097c7fdb36, type: 3}
+    - target: {fileID: 11414128, guid: e86b04a9d10335a49bcddacaa1b3382a, type: 2}
+      propertyPath: threestars
+      value: 
+      objectReference: {fileID: 2800000, guid: 52f4d149c06352d49b191816a44ee2cd, type: 3}
+    - target: {fileID: 11414128, guid: e86b04a9d10335a49bcddacaa1b3382a, type: 2}
+      propertyPath: twostars
+      value: 
+      objectReference: {fileID: 2800000, guid: af8d2650a5562694c895582746447e12, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e86b04a9d10335a49bcddacaa1b3382a, type: 2}
   m_IsPrefabParent: 0
