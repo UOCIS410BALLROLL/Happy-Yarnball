@@ -18,8 +18,6 @@ public class GameController : MonoBehaviour {
 	public int goalTime;
 	public float jumpHeight;
 
-	public int s1,s2,s3,s4;
-
 	float currentTime = 0.0f; //here
 
 	private string levelName;
