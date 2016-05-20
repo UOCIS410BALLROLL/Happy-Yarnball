@@ -218,7 +218,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 459342, guid: 5bcb5d0c4941b07419f8173583704dd2, type: 2}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 459342, guid: 5bcb5d0c4941b07419f8173583704dd2, type: 2}
       propertyPath: m_LocalScale.z
@@ -428,6 +428,10 @@ Prefab:
       propertyPath: audioSource
       value: 
       objectReference: {fileID: 1983170829}
+    - target: {fileID: 0}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e2073bf531597484582e70ff5430f394, type: 2}
   m_IsPrefabParent: 0
@@ -622,7 +626,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22439218, guid: d85c229f6d6c67e4cb6c4f7db88e385b, type: 2}
       propertyPath: m_RootOrder
-      value: 6
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 22439218, guid: d85c229f6d6c67e4cb6c4f7db88e385b, type: 2}
       propertyPath: m_AnchoredPosition.x
@@ -1413,11 +1417,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1454583811}
   m_LocalRotation: {x: 0.40821794, y: -0.23456973, z: 0.109381676, w: 0.87542605}
-  m_LocalPosition: {x: 0, y: 2, z: 10}
+  m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 968813242}
-  m_RootOrder: 0
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
 --- !u!4 &1510741301 stripped
 Transform:
   m_PrefabParentObject: {fileID: 491076, guid: d2bb8296c2fea4f44a9d151466f87b4c, type: 2}
@@ -2186,7 +2190,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 435642, guid: e86b04a9d10335a49bcddacaa1b3382a, type: 2}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 11414128, guid: e86b04a9d10335a49bcddacaa1b3382a, type: 2}
       propertyPath: cheatsEnabled
@@ -2560,7 +2564,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 968813242}
-  m_RootOrder: 1
+  m_RootOrder: 0
 --- !u!4 &2044499311 stripped
 Transform:
   m_PrefabParentObject: {fileID: 451496, guid: f49b82058898f6b4da01856d6bdb8d92, type: 2}
