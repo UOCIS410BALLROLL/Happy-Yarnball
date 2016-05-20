@@ -50,15 +50,7 @@ public class PlayerController : MonoBehaviour {
 		isJumping = false;
 	}
 
-	void FixedUpdate ()
-	{
-		if(touchedLava) {
-			return;
-		}
-		
-		float moveHorizontal = Input.GetAxis("Horizontal");
-        float moveVertical = Input.GetAxis("Vertical");
-
+	void Update() {
 		if (!isJumping && isGrounded() && Input.GetKeyDown ("space"))
 		{
 			isJumping = true;
@@ -71,6 +63,16 @@ public class PlayerController : MonoBehaviour {
 			hasDoubleJumped = true;
 			rb.velocity = new Vector3(rb.velocity.x, jumpHeight, rb.velocity.z);
 		}
+	}
+
+	void FixedUpdate ()
+	{
+		if(touchedLava) {
+			return;
+		}
+		
+		float moveHorizontal = Input.GetAxis("Horizontal");
+        float moveVertical = Input.GetAxis("Vertical");
 		
 		if (isPowered) {
 			if (Time.time > powerEnd) {
