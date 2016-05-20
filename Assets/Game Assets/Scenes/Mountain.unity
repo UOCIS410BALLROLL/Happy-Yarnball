@@ -729,10 +729,10 @@ ParticleSystem:
         rgba: 4294967295
       maxColor:
         serializedVersion: 2
-        rgba: 4280232261
+        rgba: 4281808859
       minMaxState: 0
     startSize:
-      scalar: 0.12
+      scalar: 0.15
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -900,7 +900,7 @@ ParticleSystem:
     serializedVersion: 2
     m_Type: 0
     rate:
-      scalar: 150
+      scalar: 45
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -1098,10 +1098,10 @@ ParticleSystem:
       maxGradient:
         key0:
           serializedVersion: 2
-          rgba: 205603200
+          rgba: 204945371
         key1:
           serializedVersion: 2
-          rgba: 4276608
+          rgba: 14408667
         key2:
           serializedVersion: 2
           rgba: 0
