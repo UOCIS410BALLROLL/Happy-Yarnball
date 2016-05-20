@@ -139,8 +139,15 @@ public class GameController : MonoBehaviour {
     IEnumerator LevelComplete()
     {
 		alertText.text = string.Format("Level Complete in {0} Seconds, you got {1}/3 stars!", currentTime, GetStars());
-		PlayerPrefs.SetInt (string.Format ("{0}-Stars", levelName), GetStars ());
-		PlayerPrefs.SetFloat (string.Format ("{0}-Time", levelName), currentTime);
+
+		if(GetStars() > PlayerPrefs.GetInt(string.Format ("{0}-Stars", levelName))) {
+			PlayerPrefs.SetInt (string.Format ("{0}-Stars", levelName), GetStars ());
+			PlayerPrefs.SetFloat (string.Format ("{0}-Time", levelName), currentTime);
+		}
+		else if(GetStars() == PlayerPrefs.GetInt(string.Format ("{0}-Stars", levelName))) {
+			PlayerPrefs.SetFloat (string.Format ("{0}-Time", levelName), Mathf.Min(currentTime, PlayerPrefs.GetFloat(string.Format ("{0}-Time", levelName))));
+		}
+
         player.GetComponent<Rigidbody>().isKinematic = true;
         yield return new WaitForSeconds(2);
         alertText.text = "\n" + alertText.text + "\nPress Any Key to go to the next level";
