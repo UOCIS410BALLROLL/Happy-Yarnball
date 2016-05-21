@@ -264,9 +264,9 @@ public class GameController : MonoBehaviour {
 	{
 		if (alertText.text == "Game Over") { // change to death condition
 			currentTime = 0;
-		}
+		} else if (gameOver || nextLevel.gameObject.activeSelf) {}
 		else{
-			timerText.text = "Time: " + Mathf.Round (currentTime).ToString ();
+			timerText.text = "Time: " + Mathf.Floor (currentTime).ToString ();
 			currentTime += Time.deltaTime;
 		}
 	}

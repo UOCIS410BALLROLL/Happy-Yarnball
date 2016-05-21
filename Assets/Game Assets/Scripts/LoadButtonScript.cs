@@ -20,12 +20,13 @@ public class LoadButtonScript : MonoBehaviour {
 		int stars = PlayerPrefs.GetInt (level + "-Stars");
 		if (stars > 0) {
 			unlocked = true;
-			timeText.text = PlayerPrefs.GetFloat (level + "-Time").ToString();
+			timeText.text = string.Format("{0:F2}", PlayerPrefs.GetFloat (level + "-Time"));
 			img.texture = starTextures [stars];
 		} else {
 			unlocked = false;
 			buttonText.text = "Locked";
 			timeText.text = "";
+			img.texture = starTextures [stars];
 		}
 	}
 
