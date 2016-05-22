@@ -31,7 +31,14 @@ public class GameController : MonoBehaviour {
 	private bool endLevel;
     private bool gameOver;
 	private bool displayingMessage;
+	private bool canUpdateAlert, showingImportantText;
     private GameObject cam;
+	private int[] powerupCounts;
+
+	private const int NUMPOWS = 3;
+	private const int SPEED = 0;
+	private const int JUMP = 1;
+	private const int SHRINK = 2;
 
 //	public AudioSource desertSound;
 
@@ -43,6 +50,7 @@ public class GameController : MonoBehaviour {
         minMorsels = Mathf.Clamp(minMorsels, 0, totalMorsels);
         gameOver = false;
 		endLevel = false;
+		canUpdateAlert = true;
         player = Instantiate(player, new Vector3(start_x, start_y, start_z), player.transform.rotation) as GameObject;
 		player.GetComponent<PlayerController> ().SetJumpHeight (jumpHeight);
         cam = GameObject.FindGameObjectWithTag("MainCamera");
@@ -50,6 +58,10 @@ public class GameController : MonoBehaviour {
         StartCoroutine(StartLevelMessage());
 		displayingMessage = false;
 		levelName = SceneManager.GetActiveScene ().name;
+		powerupCounts = new int[NUMPOWS];
+		for (int i = 0; i < NUMPOWS; i++) {
+			powerupCounts [i] = 0;
+		}
 
 		nextLevel.gameObject.SetActive (false);
 		mainMenu.gameObject.SetActive (false);
@@ -74,6 +86,13 @@ public class GameController : MonoBehaviour {
 		if(cheatsEnabled)
 		{
 			CheckCheats ();
+		}
+		if (canUpdateAlert && !showingImportantText) {
+			alertText.text = string.Format ("{0}{1}{2}",
+				(powerupCounts [SPEED] == 0 ? "" : "Speed Up\n"),
+				(powerupCounts [JUMP] == 0 ? "" : "Double Jump\n"),
+				(powerupCounts [SHRINK] == 0 ? "" : "Shrink\n")
+			);
 		}
 		Timer ();
     }
@@ -238,22 +257,55 @@ public class GameController : MonoBehaviour {
         }
     }
 
+	[SerializeField]
+	public int GetPowerConstant(string powerStr) {
+		return powerStr.CompareTo ("Speed Boost!") == 0 ? SPEED
+				: powerStr.CompareTo ("Shrink!") == 0 ? SHRINK
+				: JUMP;
+	}
+
+	[SerializeField]
+	public void AddPower(int powerCons) {
+		if (powerCons >= 0 && powerCons < NUMPOWS) {
+			powerupCounts [powerCons]++;
+		}
+	}
+
+	[SerializeField]
+	public void RemPower(int powerCons) {
+		if (powerCons >= 0 && powerCons < NUMPOWS) {
+			powerupCounts [powerCons]--;
+		}
+	}
+
     IEnumerator StartLevelMessage()
     {
-        alertText.text = string.Format("Level Goal: {0}/{1} Cats", minMorsels, totalMorsels);
+		showingImportantText = true;
+		if (canUpdateAlert) {
+			alertText.text = string.Format ("Level Goal: {0}/{1} Cats", minMorsels, totalMorsels);
+		}
         yield return new WaitForSeconds(3);
-        alertText.text = "";
+		if (canUpdateAlert) {
+			alertText.text = "";
+		}
+		showingImportantText = false;
     }
 	
 	IEnumerator NotFinishedMessage() {
-		alertText.text = string.Format("Need {0} Cats to Advance", minMorsels-morselCount);
-		yield return new WaitForSeconds(2);
-		alertText.text = "";
+		showingImportantText = true;
+		if (canUpdateAlert) {
+			alertText.text = string.Format ("Need {0} Cats to Advance", minMorsels - morselCount);
+		}
+		yield return new WaitForSeconds (2);
+		if (canUpdateAlert) {
+			alertText.text = "";
+		}
 		displayingMessage = false;
 	}
 
     IEnumerator GameOver()
     {
+		canUpdateAlert = false;
         alertText.text = "Game Over";
         yield return new WaitForSeconds(2);
         alertText.text = "\n" + alertText.text + "\nPress Any Key to Restart";
