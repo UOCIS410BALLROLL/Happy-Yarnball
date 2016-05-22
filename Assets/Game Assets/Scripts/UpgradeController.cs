@@ -17,7 +17,9 @@ public class UpgradeController : MonoBehaviour {
 	void Start () {
 		inactiveTime = 0;
 		gc = GameObject.FindGameObjectWithTag ("GameController").GetComponent<GameController> ();
-		powerCons = gc.GetPowerConstant (powerUp);
+		powerCons = powerUp.CompareTo ("Speed Boost!") == 0 ? GameController.SPEED
+			: powerUp.CompareTo ("Shrink!") == 0 ? GameController.SHRINK
+			: GameController.JUMP;
 	}
 	
 	// Update is called once per frame

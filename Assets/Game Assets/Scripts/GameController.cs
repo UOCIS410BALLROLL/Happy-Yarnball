@@ -36,9 +36,9 @@ public class GameController : MonoBehaviour {
 	private int[] powerupCounts;
 
 	private const int NUMPOWS = 3;
-	private const int SPEED = 0;
-	private const int JUMP = 1;
-	private const int SHRINK = 2;
+	public const int SPEED = 0;
+	public const int JUMP = 1;
+	public const int SHRINK = 2;
 
 //	public AudioSource desertSound;
 
@@ -258,13 +258,6 @@ public class GameController : MonoBehaviour {
     }
 
 	[SerializeField]
-	public int GetPowerConstant(string powerStr) {
-		return powerStr.CompareTo ("Speed Boost!") == 0 ? SPEED
-				: powerStr.CompareTo ("Shrink!") == 0 ? SHRINK
-				: JUMP;
-	}
-
-	[SerializeField]
 	public void AddPower(int powerCons) {
 		if (powerCons >= 0 && powerCons < NUMPOWS) {
 			powerupCounts [powerCons]++;
@@ -276,6 +269,11 @@ public class GameController : MonoBehaviour {
 		if (powerCons >= 0 && powerCons < NUMPOWS) {
 			powerupCounts [powerCons]--;
 		}
+	}
+
+	[SerializeField]
+	public int GetPowerCount(int powerCons) {
+		return powerupCounts [powerCons];
 	}
 
     IEnumerator StartLevelMessage()

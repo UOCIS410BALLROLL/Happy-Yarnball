@@ -9,8 +9,12 @@ public class EndCreditsScript : MonoBehaviour {
 	public int speed = 1;
 	public string level;
 
+	void Start() {
+		camera = GameObject.FindGameObjectWithTag ("MainCamera");
+	}
+
 	void Update() {
-		camera.transform.Translate (Vector3.down * Time.deltaTime * speed);
+		camera.GetComponent<Camera>().transform.Translate (Vector3.down * Time.deltaTime * speed);
 	}
 
 	IEnumerator waitFor() {

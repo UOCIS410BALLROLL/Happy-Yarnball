@@ -14,10 +14,9 @@ public class PlayerController : MonoBehaviour {
     private GameController game;
 	private AudioSource audioSource;
     private AudioSource powerupSound;
-	private bool isJumping, isPowered, canDoubleJump, hasDoubleJumped;
+	private bool isJumping, canDoubleJump, hasDoubleJumped;
 	private bool touchedLava;
 	private float jumpHeight;
-	private float powerEnd;
 	private float upgrade;
 	private float scaleVal;
 	
@@ -27,7 +26,6 @@ public class PlayerController : MonoBehaviour {
 		rb = GetComponent<Rigidbody>();
         game = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();       //I can't figure out how to instatiate an instance of GameController
 		isJumping=false;
-		isPowered = false;
 		canDoubleJump = false;
 		hasDoubleJumped = false;
 		touchedLava = false;
@@ -73,15 +71,16 @@ public class PlayerController : MonoBehaviour {
 		
 		float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
-		
-		if (isPowered) {
-			if (Time.time > powerEnd) {
-				upgrade = 1;
-				isPowered = false;
-				canDoubleJump = false;
-				scaleVal = 1.0f;
-				rb.transform.localScale = new Vector3(scaleVal, scaleVal, scaleVal);
-			}
+
+		if (game.GetPowerCount (GameController.SPEED) == 0) {
+			upgrade = 1;
+		}
+		if(game.GetPowerCount(GameController.SHRINK) == 0) {
+			scaleVal = 1.0f;
+			rb.transform.localScale = new Vector3(scaleVal, scaleVal, scaleVal);
+		}
+		if (game.GetPowerCount (GameController.JUMP) == 0) {
+			canDoubleJump = false;
 		}
 
         //get trig values of the current camera angle
@@ -122,9 +121,7 @@ public class PlayerController : MonoBehaviour {
 		{
             UpgradeController powerup = (UpgradeController) other.gameObject.GetComponent("UpgradeController");
             powerup.SetInactive ();
-            isPowered = true;
 			upgrade = powerup.GetPower();
-			powerEnd = Time.time + powerup.GetDuration();
 			StartCoroutine(GameObject.FindGameObjectWithTag("UISpeed").GetComponent<PickupDisplayer> ().ShowPickup (powerup.GetDuration()));
 		}
 		else if (other.gameObject.CompareTag("Goal"))
@@ -134,20 +131,16 @@ public class PlayerController : MonoBehaviour {
 		else if(other.gameObject.CompareTag("DoubleJump")) {
             UpgradeController powerup = (UpgradeController)other.gameObject.GetComponent("UpgradeController");
             powerup.SetInactive ();
-            isPowered = true;
 			canDoubleJump = true;
-			powerEnd = Time.time + powerup.GetDuration();
 			StartCoroutine(GameObject.FindGameObjectWithTag("UIDouble").GetComponent<PickupDisplayer> ().ShowPickup (powerup.GetDuration()));
 		}
         else if (other.gameObject.CompareTag("Shrink"))
         {
             UpgradeController powerup = (UpgradeController) other.gameObject.GetComponent("UpgradeController");
             powerup.SetInactive ();
-            isPowered = true;
 			scaleVal = powerup.GetPower();
             rb.transform.localScale = new Vector3(scaleVal, scaleVal, scaleVal);
 			StartCoroutine(GameObject.FindGameObjectWithTag("UIShrink").GetComponent<PickupDisplayer> ().ShowPickup (powerup.GetDuration()));
-			powerEnd = Time.time + powerup.GetDuration();
         }
         
     }
