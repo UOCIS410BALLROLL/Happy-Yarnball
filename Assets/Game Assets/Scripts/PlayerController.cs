@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour {
     private GameController game;
 	private AudioSource audioSource;
     private AudioSource powerupSound;
+	private AudioSource levelCompleteSound;
 	private bool isJumping, canDoubleJump, hasDoubleJumped;
 	private bool touchedLava;
 	private float jumpHeight;
@@ -126,6 +127,9 @@ public class PlayerController : MonoBehaviour {
 		}
 		else if (other.gameObject.CompareTag("Goal"))
 		{
+			levelCompleteSound = gameObject.GetComponent<AudioSource>();
+			levelCompleteSound.Play ();
+
 			game.ExitReached();
 		}
 		else if(other.gameObject.CompareTag("DoubleJump")) {
