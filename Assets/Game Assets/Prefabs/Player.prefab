@@ -90,7 +90,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 19f89c6e740e7447f9e12a8310d3e973, type: 3}
+  m_audioClip: {fileID: 8300000, guid: dcecab7e051673748998c88305850579, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -167,10 +167,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 11
-  jumpHeight: 7
-  upgradeAmt: 2.5
-  powerTime: 5
-  shrinkTime: 0
   lavaSinkTime: 1
   lavaSinkMaxAngularVelocity: 1
 --- !u!135 &13570510
