@@ -14,6 +14,7 @@ public class ObjectRotateController : MonoBehaviour {
 		rb = GetComponent<Rigidbody>();
 		float hor = horizontalRotate ? 1 : 0;
 		float ver = verticalRotate ? 1 : 0;
+
 		rotate = Vector3.ClampMagnitude(new Vector3(ver, hor, 0.0f), 1.0f);
 	}
 	
