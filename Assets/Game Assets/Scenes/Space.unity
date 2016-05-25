@@ -1436,7 +1436,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11423808, guid: 42de1dd2e5ec9e9469f14a089a40f41d, type: 2}
       propertyPath: speed
-      value: 75
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 125730, guid: 42de1dd2e5ec9e9469f14a089a40f41d, type: 2}
       propertyPath: m_Name
