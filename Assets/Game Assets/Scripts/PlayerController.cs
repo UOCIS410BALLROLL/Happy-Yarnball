@@ -9,8 +9,6 @@ public class PlayerController : MonoBehaviour {
 	public float lavaSinkMaxAngularVelocity;
 
 	private Rigidbody rb;
-    private MeshRenderer rend;
-    private Collider coll;
     private GameController game;
 	private AudioSource audioSource;
     private AudioSource powerupSound;

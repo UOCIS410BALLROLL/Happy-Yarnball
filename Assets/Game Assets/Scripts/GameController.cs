@@ -6,12 +6,14 @@ using UnityEngine.UI;
 public class GameController : MonoBehaviour {
 
     public GameObject player;
+    public UpgradeController ug;
     public float start_x = 0;
     public float start_y = 0;
     public float start_z = 0;
     public Text morselText;
     public Text alertText;
 	public Text timerText;
+    public Text starTimerText;
 	public Texture[] starTextures;
 	public bool cheatsEnabled; // set True for development, False for testing (maybe easter egg way to enable)
     public int minMorsels;
@@ -24,6 +26,7 @@ public class GameController : MonoBehaviour {
 
 
 	float currentTime = 0.0f; //here
+    float powerUpTime;
 
 	private string levelName;
     private int totalMorsels;
@@ -51,6 +54,7 @@ public class GameController : MonoBehaviour {
         gameOver = false;
 		endLevel = false;
 		canUpdateAlert = true;
+        starTimerText.text = "";
         player = Instantiate(player, new Vector3(start_x, start_y, start_z), player.transform.rotation) as GameObject;
 		player.GetComponent<PlayerController> ().SetJumpHeight (jumpHeight);
         cam = GameObject.FindGameObjectWithTag("MainCamera");
@@ -62,7 +66,6 @@ public class GameController : MonoBehaviour {
 		for (int i = 0; i < NUMPOWS; i++) {
 			powerupCounts [i] = 0;
 		}
-
 		nextLevel.gameObject.SetActive (false);
 		mainMenu.gameObject.SetActive (false);
 		restartLevel.gameObject.SetActive (false);
@@ -88,6 +91,7 @@ public class GameController : MonoBehaviour {
 			CheckCheats ();
 		}
 		if (canUpdateAlert && !showingImportantText) {
+            powerUpTime = ug.GetDuration();
 			alertText.text = string.Format ("{0}{1}{2}",
 				(powerupCounts [SPEED] == 0 ? "" : "Speed Up\n"),
 				(powerupCounts [JUMP] == 0 ? "" : "Double Jump\n"),
@@ -188,6 +192,7 @@ public class GameController : MonoBehaviour {
 		PlayerPrefs.Save ();
 
         player.GetComponent<Rigidbody>().isKinematic = true;
+        starTimerText.text = "The time for 3 \nstars is: " + goalTime + " seconds";
 		nextLevel.gameObject.SetActive (true);
 		mainMenu.gameObject.SetActive (true);
 		restartLevel.gameObject.SetActive (true);
@@ -316,7 +321,8 @@ public class GameController : MonoBehaviour {
 			currentTime = 0;
 		} else if (gameOver || nextLevel.gameObject.activeSelf) {}
 		else{
-			timerText.text = "Time: " + Mathf.Floor (currentTime).ToString ();
+            starTimerText.text = "";
+            timerText.text = "Time: " + Mathf.Floor (currentTime).ToString ();
 			currentTime += Time.deltaTime;
 		}
 	}
