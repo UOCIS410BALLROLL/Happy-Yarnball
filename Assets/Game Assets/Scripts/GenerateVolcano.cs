@@ -19,9 +19,12 @@ public class GenerateVolcano : MonoBehaviour {
 		int w = tdata.heightmapWidth;
 		float[,] data = new float[h, w];
 
-		using (System.IO.FileStream file = System.IO.File.OpenRead(Application.streamingAssetsPath + "/TerrainHeightMaps/terrain_windows.raw"))
-		using (System.IO.BinaryReader reader = new System.IO.BinaryReader(file))
+		TextAsset map_bin = Resources.Load ("TerrainHeightMaps/volcanoMap.bytes") as TextAsset;
+		byte[] vals = map_bin.bytes;
+		System.IO.Stream stream = new System.IO.MemoryStream (vals);
+		using (System.IO.BinaryReader reader = new System.IO.BinaryReader(stream))
 		{
+			//System.IO.File.WriteAllBytes (Application.streamingAssetsPath + "/TerrainHeightMaps/volcanoMap.bytes", System.IO.File.ReadAllBytes(Application.streamingAssetsPath + "/TerrainHeightMaps/terrain_windows.raw"));
 			for (int y = 0; y < h; y++)
 			{
 				for (int x = 0; x < w; x++)
@@ -31,7 +34,9 @@ public class GenerateVolcano : MonoBehaviour {
 				}
 			}
 		}
+
 		tdata.SetHeights(0, 0, data);
+
 
 		GameObject terrain = Terrain.CreateTerrainGameObject (tdata);
 		terrain.name = "Volcano";
