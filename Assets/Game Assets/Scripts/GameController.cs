@@ -189,7 +189,7 @@ public class GameController : MonoBehaviour {
         player.GetComponent<Rigidbody>().isKinematic = true;
 
 		if (GetStars () == 2) {
-			starTimerText.text = "Collect all cats in under " + goalTime + " seconds to get 3 stars!";
+			starTimerText.text = "Collect all cats in " + goalTime + " seconds to get 3 stars!";
 		}
 		nextLevel.gameObject.SetActive (true);
 		mainMenu.gameObject.SetActive (true);

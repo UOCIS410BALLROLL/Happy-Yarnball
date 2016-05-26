@@ -4378,7 +4378,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Collect all cats in under 0 seconds to get 3 stars!
+  m_Text: Collect all cats in 0 seconds to get 3 stars!
 --- !u!114 &11435152
 MonoBehaviour:
   m_ObjectHideFlags: 1
