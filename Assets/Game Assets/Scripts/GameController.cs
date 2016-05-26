@@ -26,7 +26,6 @@ public class GameController : MonoBehaviour {
 
 
 	float currentTime = 0.0f; //here
-    public float powerUpTime;
 
 	private string levelName;
     private int totalMorsels;
@@ -92,11 +91,10 @@ public class GameController : MonoBehaviour {
 			CheckCheats ();
 		}
 		if (canUpdateAlert && !showingImportantText) {
-            powerUpTime -= Time.deltaTime;
             alertText.text = string.Format ("{0}{1}{2}",
-				(powerupCounts [SPEED] == 0 ? "" : "Speed Up\n" + powerUpTime),
-				(powerupCounts [JUMP] == 0 ? "" : "Double Jump\n" + powerUpTime),
-				(powerupCounts [SHRINK] == 0 ? "" : "Shrink\n" + powerUpTime)
+				(powerupCounts [SPEED] == 0 ? "" : "Speed Up\n"),
+				(powerupCounts [JUMP] == 0 ? "" : "Double Jump\n"),
+				(powerupCounts [SHRINK] == 0 ? "" : "Shrink\n")
             );
             
 		}
@@ -141,11 +139,6 @@ public class GameController : MonoBehaviour {
 		{
 			//Load the 5th Level
 			SceneManager.LoadScene(5);
-		}
-		else if (Input.GetKeyDown("0"))
-		{
-			//Load the prototype level
-			SceneManager.LoadScene(SceneManager.GetSceneByName("PrototypeScene").name);
 		}
 		else if (Input.GetKeyDown("j"))
 		{

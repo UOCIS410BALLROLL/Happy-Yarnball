@@ -3050,7 +3050,7 @@ Prefab:
     - target: {fileID: 11414128, guid: e86b04a9d10335a49bcddacaa1b3382a, type: 2}
       propertyPath: alertText
       value: 
-      objectReference: {fileID: 755178481}
+      objectReference: {fileID: 1276242578}
     - target: {fileID: 11414128, guid: e86b04a9d10335a49bcddacaa1b3382a, type: 2}
       propertyPath: start_y
       value: 3
@@ -3083,6 +3083,10 @@ Prefab:
       propertyPath: mainMenu
       value: 
       objectReference: {fileID: 263169706}
+    - target: {fileID: 11414128, guid: e86b04a9d10335a49bcddacaa1b3382a, type: 2}
+      propertyPath: starTimerText
+      value: 
+      objectReference: {fileID: 949891936}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e86b04a9d10335a49bcddacaa1b3382a, type: 2}
   m_IsPrefabParent: 0
@@ -3350,6 +3354,12 @@ Transform:
   m_Children: []
   m_Father: {fileID: 734257920}
   m_RootOrder: 3
+--- !u!114 &949891936 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11434104, guid: d85c229f6d6c67e4cb6c4f7db88e385b,
+    type: 2}
+  m_PrefabInternal: {fileID: 263169705}
+  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
 --- !u!1 &956783903
 GameObject:
   m_ObjectHideFlags: 0
@@ -3431,6 +3441,12 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 956783903}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &959691731 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11416456, guid: d85c229f6d6c67e4cb6c4f7db88e385b,
+    type: 2}
+  m_PrefabInternal: {fileID: 263169705}
+  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
 --- !u!1 &1030885116
 GameObject:
   m_ObjectHideFlags: 0
@@ -3771,6 +3787,12 @@ Transform:
   m_Children: []
   m_Father: {fileID: 734257920}
   m_RootOrder: 14
+--- !u!114 &1276242578 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11495828, guid: d85c229f6d6c67e4cb6c4f7db88e385b,
+    type: 2}
+  m_PrefabInternal: {fileID: 263169705}
+  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
 --- !u!4 &1284321581
 Transform:
   m_ObjectHideFlags: 0
@@ -4516,6 +4538,10 @@ Prefab:
       propertyPath: powerUp
       value: Double Jump!
       objectReference: {fileID: 0}
+    - target: {fileID: 11462914, guid: d2bb8296c2fea4f44a9d151466f87b4c, type: 2}
+      propertyPath: timeText
+      value: 
+      objectReference: {fileID: 959691731}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d2bb8296c2fea4f44a9d151466f87b4c, type: 2}
   m_IsPrefabParent: 0
