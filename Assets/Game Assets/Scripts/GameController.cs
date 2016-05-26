@@ -86,7 +86,7 @@ public class GameController : MonoBehaviour {
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
-		if(cheatsEnabled)
+		if(!gameOver && cheatsEnabled)
 		{
 			CheckCheats ();
 		}
@@ -116,7 +116,6 @@ public class GameController : MonoBehaviour {
 		}
 		else if (Input.GetKeyDown("1"))
 		{
-//			desertSound.Play ();
 			//Load the 1st level
 			SceneManager.LoadScene(1);
 		}
@@ -306,11 +305,11 @@ public class GameController : MonoBehaviour {
 
     IEnumerator GameOver()
     {
+		gameOver = true;
 		canUpdateAlert = false;
         alertText.text = "Game Over";
         yield return new WaitForSeconds(2);
-        alertText.text = "\n" + alertText.text + "\nPress Any Key to Restart";
-        gameOver = true;
+		alertText.text = "Press Any Key to Restart";
     }
 
 	void Timer()
