@@ -31,7 +31,7 @@ public class UpgradeController : MonoBehaviour {
 		if (Time.time > durationTime)
 			timeText.text = "";
 		else
-			timeText.text = string.Format("{0}", (int)(durationTime - Time.time));
+			timeText.text = string.Format("  {0}", (int)(durationTime - Time.time));
 		
 		if (inactiveTime != 0 && Time.time > inactiveTime) {
 			inactiveTime = 0;
