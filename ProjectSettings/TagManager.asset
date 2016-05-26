@@ -18,6 +18,7 @@ TagManager:
   - UISpeed
   - CatSkin
   - FillColor
+  - DeathBox
   layers:
   - Default
   - TransparentFX

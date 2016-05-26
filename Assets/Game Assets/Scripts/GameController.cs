@@ -42,22 +42,23 @@ public class GameController : MonoBehaviour {
 	public const int JUMP = 1;
 	public const int SHRINK = 2;
 
+    public AudioSource deathSound;
 //	public AudioSource desertSound;
 
     void Start()
     {
         morselCount = 0;
         totalMorsels = GameObject.FindGameObjectsWithTag("Cat").Length;
-        morselText.text = string.Format("{0}/{1} Cats", morselCount, totalMorsels);
+        morselText.text = string.Format("{0}/{1}", morselCount, totalMorsels);
         minMorsels = Mathf.Clamp(minMorsels, 0, totalMorsels);
         gameOver = false;
 		endLevel = false;
 		canUpdateAlert = true;
+        deathSound = GameObject.FindGameObjectWithTag("DeathBox").GetComponent<AudioSource>();
         starTimerText.text = "";
         player = Instantiate(player, new Vector3(start_x, start_y, start_z), player.transform.rotation) as GameObject;
 		player.GetComponent<PlayerController> ().SetJumpHeight (jumpHeight);
         cam = GameObject.FindGameObjectWithTag("MainCamera");
-        //ug = GameObject.FindGameObjectWithTag("UpgradeController").GetComponent<UpgradeController>();
         cam.GetComponent<CameraController>().SetPlayer(player);
         StartCoroutine(StartLevelMessage());
 		displayingMessage = false;
@@ -86,7 +87,7 @@ public class GameController : MonoBehaviour {
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
-		if(cheatsEnabled)
+		if(!gameOver && cheatsEnabled)
 		{
 			CheckCheats ();
 		}
@@ -116,7 +117,6 @@ public class GameController : MonoBehaviour {
 		}
 		else if (Input.GetKeyDown("1"))
 		{
-//			desertSound.Play ();
 			//Load the 1st level
 			SceneManager.LoadScene(1);
 		}
@@ -187,7 +187,10 @@ public class GameController : MonoBehaviour {
 		PlayerPrefs.Save ();
 
         player.GetComponent<Rigidbody>().isKinematic = true;
-        starTimerText.text = "The time for 3 \nstars is: " + goalTime + " seconds";
+		alertText.text = "";
+		if (GetStars () == 2) {
+			starTimerText.text = "Collect all cats in " + goalTime + " seconds to get 3 stars!";
+		}
 		nextLevel.gameObject.SetActive (true);
 		mainMenu.gameObject.SetActive (true);
 		restartLevel.gameObject.SetActive (true);
@@ -226,7 +229,7 @@ public class GameController : MonoBehaviour {
     }
     void UpdateUI()
     {
-        morselText.text = string.Format("{0}/{1} Cats", morselCount, totalMorsels);
+        morselText.text = string.Format("{0}/{1}", morselCount, totalMorsels);
     }
 
     [SerializeField]
@@ -303,20 +306,20 @@ public class GameController : MonoBehaviour {
 
     IEnumerator GameOver()
     {
+		gameOver = true;
 		canUpdateAlert = false;
+        deathSound.Play();
         alertText.text = "Game Over";
         yield return new WaitForSeconds(2);
-        alertText.text = "\n" + alertText.text + "\nPress Any Key to Restart";
-        gameOver = true;
+		alertText.text = "Press Any Key to Restart";
     }
 
 	void Timer()
 	{
-		if (alertText.text == "Game Over") { // change to death condition
+		if (gameOver) { // change to death condition
 			currentTime = 0;
 		} else if (gameOver || nextLevel.gameObject.activeSelf) {}
 		else{
-            starTimerText.text = "";
             timerText.text = "Time: " + Mathf.Floor (currentTime).ToString ();
 			currentTime += Time.deltaTime;
 		}
