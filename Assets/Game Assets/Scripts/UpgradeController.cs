@@ -10,6 +10,7 @@ public class UpgradeController : MonoBehaviour {
 	public string powerUp;
 
 	private float inactiveTime;
+    private float currentTime;
 	private GameController gc;
 	private int powerCons;
 
@@ -41,10 +42,12 @@ public class UpgradeController : MonoBehaviour {
 	}
 
 	public void SetInactive(){
+        currentTime = Time.time;
 		this.gameObject.GetComponent<Collider> ().enabled = false;
 		this.gameObject.GetComponent<Renderer> ().enabled = false;
 		this.gameObject.GetComponent<AudioSource> ().Play ();
 		inactiveTime = Time.time + respawnTime;
+        gc.powerUpTime = respawnTime;
 		gc.AddPower (powerCons);
 	}
 

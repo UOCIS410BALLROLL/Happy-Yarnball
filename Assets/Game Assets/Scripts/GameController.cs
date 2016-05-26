@@ -26,7 +26,7 @@ public class GameController : MonoBehaviour {
 
 
 	float currentTime = 0.0f; //here
-    float powerUpTime;
+    public float powerUpTime;
 
 	private string levelName;
     private int totalMorsels;
@@ -58,6 +58,7 @@ public class GameController : MonoBehaviour {
         player = Instantiate(player, new Vector3(start_x, start_y, start_z), player.transform.rotation) as GameObject;
 		player.GetComponent<PlayerController> ().SetJumpHeight (jumpHeight);
         cam = GameObject.FindGameObjectWithTag("MainCamera");
+        //ug = GameObject.FindGameObjectWithTag("UpgradeController").GetComponent<UpgradeController>();
         cam.GetComponent<CameraController>().SetPlayer(player);
         StartCoroutine(StartLevelMessage());
 		displayingMessage = false;
@@ -91,12 +92,13 @@ public class GameController : MonoBehaviour {
 			CheckCheats ();
 		}
 		if (canUpdateAlert && !showingImportantText) {
-            powerUpTime = ug.GetDuration();
-			alertText.text = string.Format ("{0}{1}{2}",
-				(powerupCounts [SPEED] == 0 ? "" : "Speed Up\n"),
-				(powerupCounts [JUMP] == 0 ? "" : "Double Jump\n"),
-				(powerupCounts [SHRINK] == 0 ? "" : "Shrink\n")
-			);
+            powerUpTime -= Time.deltaTime;
+            alertText.text = string.Format ("{0}{1}{2}",
+				(powerupCounts [SPEED] == 0 ? "" : "Speed Up\n" + powerUpTime),
+				(powerupCounts [JUMP] == 0 ? "" : "Double Jump\n" + powerUpTime),
+				(powerupCounts [SHRINK] == 0 ? "" : "Shrink\n" + powerUpTime)
+            );
+            
 		}
 		Timer ();
     }
