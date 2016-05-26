@@ -187,7 +187,10 @@ public class GameController : MonoBehaviour {
 		PlayerPrefs.Save ();
 
         player.GetComponent<Rigidbody>().isKinematic = true;
-        starTimerText.text = "The time for 3 \nstars is: " + goalTime + " seconds";
+
+		if (GetStars () == 2) {
+			starTimerText.text = "Collect all cats in under " + goalTime + " seconds to get 3 stars!";
+		}
 		nextLevel.gameObject.SetActive (true);
 		mainMenu.gameObject.SetActive (true);
 		restartLevel.gameObject.SetActive (true);
@@ -312,11 +315,10 @@ public class GameController : MonoBehaviour {
 
 	void Timer()
 	{
-		if (alertText.text == "Game Over") { // change to death condition
+		if (gameOver) { // change to death condition
 			currentTime = 0;
 		} else if (gameOver || nextLevel.gameObject.activeSelf) {}
 		else{
-            starTimerText.text = "";
             timerText.text = "Time: " + Mathf.Floor (currentTime).ToString ();
 			currentTime += Time.deltaTime;
 		}
