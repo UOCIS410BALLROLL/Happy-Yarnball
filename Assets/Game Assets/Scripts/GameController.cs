@@ -42,6 +42,7 @@ public class GameController : MonoBehaviour {
 	public const int JUMP = 1;
 	public const int SHRINK = 2;
 
+    public AudioSource deathSound;
 //	public AudioSource desertSound;
 
     void Start()
@@ -53,11 +54,11 @@ public class GameController : MonoBehaviour {
         gameOver = false;
 		endLevel = false;
 		canUpdateAlert = true;
+        deathSound = GameObject.FindGameObjectWithTag("DeathBox").GetComponent<AudioSource>();
         starTimerText.text = "";
         player = Instantiate(player, new Vector3(start_x, start_y, start_z), player.transform.rotation) as GameObject;
 		player.GetComponent<PlayerController> ().SetJumpHeight (jumpHeight);
         cam = GameObject.FindGameObjectWithTag("MainCamera");
-        //ug = GameObject.FindGameObjectWithTag("UpgradeController").GetComponent<UpgradeController>();
         cam.GetComponent<CameraController>().SetPlayer(player);
         StartCoroutine(StartLevelMessage());
 		displayingMessage = false;
@@ -307,6 +308,7 @@ public class GameController : MonoBehaviour {
     {
 		gameOver = true;
 		canUpdateAlert = false;
+        deathSound.Play();
         alertText.text = "Game Over";
         yield return new WaitForSeconds(2);
 		alertText.text = "Press Any Key to Restart";
