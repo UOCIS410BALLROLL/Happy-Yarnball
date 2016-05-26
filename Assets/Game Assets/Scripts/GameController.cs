@@ -187,7 +187,7 @@ public class GameController : MonoBehaviour {
 		PlayerPrefs.Save ();
 
         player.GetComponent<Rigidbody>().isKinematic = true;
-
+		alertText.text = "";
 		if (GetStars () == 2) {
 			starTimerText.text = "Collect all cats in " + goalTime + " seconds to get 3 stars!";
 		}
