@@ -20,6 +20,7 @@ public class LoadButtonScript : MonoBehaviour {
 		int stars = PlayerPrefs.GetInt (level + "-Stars");
 		if (stars > 0) {
 			unlocked = true;
+			buttonText.text = level;
 			timeText.text = string.Format("{0:F2}", PlayerPrefs.GetFloat (level + "-Time"));
 			img.texture = starTextures [stars];
 		} else {
@@ -32,14 +33,22 @@ public class LoadButtonScript : MonoBehaviour {
 
 	public void LoadLevel(int levelNum){
 		if (unlocked) {
-			PlayerPrefs.SetString ("PlayType", "Once");
-			PlayerPrefs.Save ();
 			SceneManager.LoadScene (levelNum);
 		}
 	}
 
 	public void NewGame(){
-		PlayerPrefs.SetString ("PlayType", "All");
-		SceneManager.LoadScene (1);
+		if (PlayerPrefs.GetInt ("Space-Stars") > 0) {
+			print ("hey");
+			SceneManager.LoadScene (5);
+		} else if (PlayerPrefs.GetInt ("Mountain-Stars") > 0) {
+			SceneManager.LoadScene (4);
+		} else if (PlayerPrefs.GetInt ("Forest-Stars") > 0) {
+			SceneManager.LoadScene (3);
+		} else if (PlayerPrefs.GetInt ("Ocean-Stars") > 0) {
+			SceneManager.LoadScene (2);
+		} else {
+			SceneManager.LoadScene (1);
+		}
 	}
 }
