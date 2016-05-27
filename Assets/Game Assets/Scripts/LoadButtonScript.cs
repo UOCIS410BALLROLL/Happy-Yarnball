@@ -10,6 +10,8 @@ public class LoadButtonScript : MonoBehaviour {
 	public Texture[] starTextures;
 	public string level;
 
+
+
 	private bool unlocked;
 
 	void Start(){
@@ -39,7 +41,6 @@ public class LoadButtonScript : MonoBehaviour {
 
 	public void NewGame(){
 		if (PlayerPrefs.GetInt ("Space-Stars") > 0) {
-			print ("hey");
 			SceneManager.LoadScene (5);
 		} else if (PlayerPrefs.GetInt ("Mountain-Stars") > 0) {
 			SceneManager.LoadScene (4);
@@ -51,4 +52,10 @@ public class LoadButtonScript : MonoBehaviour {
 			SceneManager.LoadScene (1);
 		}
 	}
+
+	public void LoadHelp(){
+		SceneManager.LoadScene (-1);
+	}
+
+
 }

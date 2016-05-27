@@ -15,7 +15,7 @@ public class GameController : MonoBehaviour {
 	public Text timerText;
     public Text starTimerText;
 	public Texture[] starTextures;
-	public bool cheatsEnabled; // set True for development, False for testing (maybe easter egg way to enable)
+
     public int minMorsels;
 	public int goalTime;
 	public float jumpHeight;
@@ -27,6 +27,7 @@ public class GameController : MonoBehaviour {
 
 	float currentTime = 0.0f; //here
 
+	private bool cheatsEnabled; //click top right of main menu to enable
 	private string levelName;
     private int totalMorsels;
     private int morselCount;
@@ -49,6 +50,12 @@ public class GameController : MonoBehaviour {
 
     void Start()
     {
+		if (PlayerPrefs.GetInt ("Cheatyface") == 1) {
+			timerText.text = "Cheater!";
+			cheatsEnabled = true;
+		} else {
+			cheatsEnabled = false;
+		}
         morselCount = 0;
         totalMorsels = GameObject.FindGameObjectsWithTag("Cat").Length;
         minMorsels = Mathf.Clamp(minMorsels, 0, totalMorsels);
@@ -79,7 +86,9 @@ public class GameController : MonoBehaviour {
 	void OnGUI(){
 		if (endLevel) {
 			int stars = GetStars ();
-			GUI.DrawTexture (new Rect (250, 150, 400, 200), starTextures[stars-1], ScaleMode.StretchToFill, true, 40.0F);
+			if (stars > 0) {
+				GUI.DrawTexture (new Rect (250, 150, 400, 200), starTextures [stars - 1], ScaleMode.StretchToFill, true, 40.0F);
+			}
 		}
 	}
 
@@ -89,10 +98,23 @@ public class GameController : MonoBehaviour {
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
-		if(!gameOver && cheatsEnabled)
+		if(!gameOver)
 		{
-			CheckCheats ();
+			if (cheatsEnabled) {
+				CheckCheats ();
+			}
+			if (Input.GetKeyDown(KeyCode.Escape))
+			{
+				//Load the Menu Scene
+				SceneManager.LoadScene(0);
+			}
+			if (Input.GetKeyDown("r"))
+			{
+				//Restart the Current Level
+				SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+			}
 		}
+
 		if (canUpdateAlert && !showingImportantText) {
             alertText.text = string.Format ("{0}{1}{2}",
 				(powerupCounts [SPEED] == 0 ? "" : "Speed Up\n"),
@@ -107,17 +129,7 @@ public class GameController : MonoBehaviour {
 	void CheckCheats()
 	{
 		//A number of cheats useful for debugging, if you think of something feel free to add it
-		if (Input.GetKeyDown("r"))
-		{
-			//Restart the Current Level
-			SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-		}
-		else if (Input.GetKeyDown("`"))
-		{
-			//Load the Menu Scene
-			SceneManager.LoadScene(0);
-		}
-		else if (Input.GetKeyDown("1"))
+		if (Input.GetKeyDown("1"))
 		{
 			//Load the 1st level
 			SceneManager.LoadScene(1);
@@ -222,6 +234,9 @@ public class GameController : MonoBehaviour {
 
 	public int GetStars()
 	{
+		if (PlayerPrefs.GetInt ("Cheatyface") == 1) {
+			return 0;
+		}
 		if (morselCount >= totalMorsels) 
 		{
 			if (currentTime <= goalTime) {
@@ -325,7 +340,10 @@ public class GameController : MonoBehaviour {
 
 	void Timer()
 	{
-		if (gameOver) { // change to death condition
+		if (PlayerPrefs.GetInt ("Cheatyface") == 1) {
+			timerText.text = "Cheater!";
+		}
+		else if (gameOver) { // change to death condition
 			currentTime = 0;
 		} else if (gameOver || nextLevel.gameObject.activeSelf) {}
 		else{
