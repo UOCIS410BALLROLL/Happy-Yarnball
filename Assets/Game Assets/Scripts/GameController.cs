@@ -94,6 +94,16 @@ public class GameController : MonoBehaviour {
 
     void Update()
     {
+		if (Input.GetKeyDown(KeyCode.Escape))
+		{
+			//Load the Menu Scene
+			SceneManager.LoadScene(0);
+		}
+		if (Input.GetKeyDown("r"))
+		{
+			//Restart the Current Level
+			SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+		}
         if(gameOver && Input.anyKeyDown)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
@@ -103,18 +113,8 @@ public class GameController : MonoBehaviour {
 			if (cheatsEnabled) {
 				CheckCheats ();
 			}
-			if (Input.GetKeyDown(KeyCode.Escape))
-			{
-				//Load the Menu Scene
-				SceneManager.LoadScene(0);
-			}
-			if (Input.GetKeyDown("r"))
-			{
-				//Restart the Current Level
-				SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-			}
+		
 		}
-
 		if (canUpdateAlert && !showingImportantText) {
             alertText.text = string.Format ("{0}{1}{2}",
 				(powerupCounts [SPEED] == 0 ? "" : "Speed Up\n"),
