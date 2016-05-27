@@ -51,13 +51,13 @@ public class GameController : MonoBehaviour {
     {
         morselCount = 0;
         totalMorsels = GameObject.FindGameObjectsWithTag("Cat").Length;
-        morselText.text = string.Format("{0}/{1}", morselCount, totalMorsels);
         minMorsels = Mathf.Clamp(minMorsels, 0, totalMorsels);
         gameOver = false;
 		endLevel = false;
 		canUpdateAlert = true;
         deathSound = GameObject.FindGameObjectWithTag("DeathBox").GetComponent<AudioSource>();
         starTimerText.text = "";
+		UpdateUI ();
         player = Instantiate(player, new Vector3(start_x, start_y, start_z), player.transform.rotation) as GameObject;
 		player.GetComponent<PlayerController> ().SetJumpHeight (jumpHeight);
         cam = GameObject.FindGameObjectWithTag("MainCamera");
@@ -237,7 +237,7 @@ public class GameController : MonoBehaviour {
     }
     void UpdateUI()
     {
-        morselText.text = string.Format("{0}/{1}", morselCount, totalMorsels);
+        morselText.text = string.Format("{0:D2}/{1:D2}", morselCount, totalMorsels);
 		morselText.color = morselCount >= minMorsels ? Color.green : Color.red;
     }
 

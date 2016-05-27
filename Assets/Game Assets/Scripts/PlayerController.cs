@@ -102,7 +102,7 @@ public class PlayerController : MonoBehaviour {
 	public void MoonJump()
 	{
 		//cheat function, activates through GameController
-		rb.AddForce (new Vector3(0, 40.0f, 0) * speed * upgrade);
+		rb.AddForce (new Vector3(0, 15.0f, 0) * speed * upgrade);
 	}
 
 	void OnTriggerEnter(Collider other) 
