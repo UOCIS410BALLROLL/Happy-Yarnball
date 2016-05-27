@@ -740,6 +740,7 @@ GameObject:
   - 224: {fileID: 22424822}
   - 222: {fileID: 22208076}
   - 114: {fileID: 11401102}
+  - 114: {fileID: 11418438}
   m_Layer: 5
   m_Name: MorselCounter
   m_TagString: Untagged
@@ -1105,6 +1106,7 @@ GameObject:
   - 224: {fileID: 22435714}
   - 222: {fileID: 22276012}
   - 114: {fileID: 11495828}
+  - 114: {fileID: 11472074}
   m_Layer: 5
   m_Name: AlertText
   m_TagString: Untagged
@@ -4313,6 +4315,20 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 
+--- !u!114 &11418438
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 137474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 1, g: 1, b: 1, a: 1}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!114 &11431352
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4679,6 +4695,20 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Timer Text
+--- !u!114 &11472074
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 1, g: 1, b: 1, a: 1}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!114 &11473844
 MonoBehaviour:
   m_ObjectHideFlags: 1
