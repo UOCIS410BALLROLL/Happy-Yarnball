@@ -741,7 +741,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: CHEATYFACE
+  m_Text: 
 --- !u!222 &625452985
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2872,6 +2872,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65c12e45e7655154eaa2eff32ce3ab36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cheatText: {fileID: 625452984}
 --- !u!114 &1813332716
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2970,7 +2971,7 @@ GameObject:
   - 114: {fileID: 1841264681}
   - 114: {fileID: 1841264680}
   m_Layer: 5
-  m_Name: HelpButton (1)
+  m_Name: Cheatyface
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2991,7 +2992,7 @@ RectTransform:
   m_RootOrder: 7
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 368, y: 308}
+  m_AnchoredPosition: {x: 408, y: 317}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1841264680
@@ -3005,6 +3006,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65c12e45e7655154eaa2eff32ce3ab36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cheatText: {fileID: 625452984}
 --- !u!114 &1841264681
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3045,7 +3047,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1841264680}
-        m_MethodName: ResetData
+        m_MethodName: CheatyFace
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3063,7 +3065,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1841264678}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
