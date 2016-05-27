@@ -30,6 +30,7 @@ public class GameController : MonoBehaviour {
 	private string levelName;
     private int totalMorsels;
     private int morselCount;
+    private float roundTime;
 	private bool endLevel;
     private bool gameOver;
 	private bool displayingMessage;
@@ -320,7 +321,10 @@ public class GameController : MonoBehaviour {
 			currentTime = 0;
 		} else if (gameOver || nextLevel.gameObject.activeSelf) {}
 		else{
-            timerText.text = "Time: " + Mathf.Floor (currentTime).ToString ();
+            currentTime *= 100;
+            roundTime = Mathf.Round(currentTime);
+            currentTime = (roundTime / 100);
+            timerText.text = "Time: " + currentTime.ToString ();
 			currentTime += Time.deltaTime;
 		}
 	}
