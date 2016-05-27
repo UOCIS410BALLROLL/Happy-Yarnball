@@ -246,7 +246,7 @@ public class GameController : MonoBehaviour {
 
     void UpdateUI()
     {
-        morselText.text = string.Format("{0:D2}/{1:D2}", morselCount, totalMorsels);
+        morselText.text = string.Format("{0}/{1}", morselCount, totalMorsels);
 		morselText.color = morselCount >= minMorsels ? Color.green : Color.red;
     }
 
