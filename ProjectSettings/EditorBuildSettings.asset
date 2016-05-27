@@ -12,11 +12,11 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Game Assets/Scenes/Desert.unity
   - enabled: 1
+    path: Assets/Game Assets/Scenes/Ocean.unity
+  - enabled: 1
     path: Assets/Game Assets/Scenes/Forest.unity
   - enabled: 1
     path: Assets/Game Assets/Scenes/Mountain.unity
-  - enabled: 1
-    path: Assets/Game Assets/Scenes/Ocean.unity
   - enabled: 1
     path: Assets/Game Assets/Scenes/Space.unity
   - enabled: 1
