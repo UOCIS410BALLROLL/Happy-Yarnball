@@ -4,29 +4,23 @@ using System.Collections;
 public class LavaAnimation : MonoBehaviour {
 
 	public float speed;
-	public float end_x;
-	public float end_z;
-	
-	private Rigidbody rb;
-	private float start_x, start_z;
-	private bool reverse;
+	public float x_factor;
+	public float z_factor;
+	public float period;
+
+	private Renderer rend;
 	private Vector2 direction;
 	
 	void Start () {
-		rb = GetComponent<Rigidbody>();
-		start_x = rb.transform.position.x;
-		start_z = rb.transform.position.z;
-		reverse = false;
+		rend = GetComponent<Renderer>();
+		direction = new Vector2 (x_factor, z_factor) * speed;
 		StartCoroutine (ManageMove ());
 	}
 
 	IEnumerator ManageMove() {
-		Vector2 newDirection;
-		float angle;
 		while (true) {
-			while ((angle = (Vector2.Angle ((newDirection = Random.insideUnitCircle * speed), direction) + 360) % 360) < 90 || angle > 270) {}
-			direction = newDirection;
-			yield return new WaitForSeconds (2.5f);
+			yield return new WaitForSeconds (period);
+			direction = -direction;
 		}
 	}
 	
@@ -44,7 +38,6 @@ public class LavaAnimation : MonoBehaviour {
 			reverse = !(rb.transform.position == startPosition);
 		}*/
 
-		gameObject.GetComponent<Renderer> ().material.SetTextureOffset ("_MainTex",
-			gameObject.GetComponent<Renderer>().material.GetTextureOffset("_MainTex") + direction * Time.deltaTime);
+		rend.material.SetTextureOffset ("_MainTex", rend.material.GetTextureOffset("_MainTex") + direction * Time.deltaTime);
 	}
 }
