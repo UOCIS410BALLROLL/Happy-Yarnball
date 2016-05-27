@@ -238,6 +238,7 @@ public class GameController : MonoBehaviour {
     void UpdateUI()
     {
         morselText.text = string.Format("{0}/{1}", morselCount, totalMorsels);
+		morselText.color = morselCount >= minMorsels ? Color.green : Color.red;
     }
 
     [SerializeField]
