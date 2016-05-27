@@ -165,6 +165,7 @@ GameObject:
   - 33: {fileID: 189230419}
   - 198: {fileID: 189230418}
   - 199: {fileID: 189230417}
+  - 114: {fileID: 189230421}
   m_Layer: 0
   m_Name: LavaSmokeEmitter
   m_TagString: Untagged
@@ -267,7 +268,7 @@ ParticleSystem:
     serializedVersion: 2
     enabled: 1
     startLifetime:
-      scalar: 60
+      scalar: 40
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -572,7 +573,7 @@ ParticleSystem:
       minMaxState: 0
     randomizeRotationDirection: 0
     gravityModifier: 0
-    maxNumParticles: 36500
+    maxNumParticles: 1501
     rotation3D: 0
   ShapeModule:
     serializedVersion: 2
@@ -1731,6 +1732,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1070454063}
   m_RootOrder: 1
+--- !u!114 &189230421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 189230416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b4e98d76d469474e9c8acb7f5738f16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &239509845
 Prefab:
   m_ObjectHideFlags: 0
