@@ -75,7 +75,8 @@ public class PlayerController : MonoBehaviour {
 			upgrade = 1;
 		}
 		if(game.GetPowerCount(GameController.SHRINK) == 0) {
-			scaleVal = 1.0f;
+			RaycastHit hit;
+			scaleVal = Physics.SphereCast(gameObject.transform.position, (GetComponent<SphereCollider>().radius - 0.1f) * scaleVal, Vector3.up, out hit, 0.125f * scaleVal) ? scaleVal : Mathf.Lerp(scaleVal, 1.0f, Time.deltaTime);
 			rb.transform.localScale = new Vector3(scaleVal, scaleVal, scaleVal);
 		}
 		if (game.GetPowerCount (GameController.JUMP) == 0) {
