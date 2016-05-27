@@ -22,8 +22,8 @@
 *.mel              text
 *.php              text
 *.shader           text
-*.txt              text
-*.TXT              text
+#*.txt              text
+#*.TXT              text
 *.xaml             text
 *.xml              text
 *.xsd              text
