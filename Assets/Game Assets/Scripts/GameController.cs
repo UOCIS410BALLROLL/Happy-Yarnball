@@ -44,6 +44,7 @@ public class GameController : MonoBehaviour {
 	public const int SHRINK = 2;
 
     public AudioSource deathSound;
+
 //	public AudioSource desertSound;
 
     void Start()
@@ -78,7 +79,7 @@ public class GameController : MonoBehaviour {
 	void OnGUI(){
 		if (endLevel) {
 			int stars = GetStars ();
-			GUI.DrawTexture (new Rect (250, 150, 300, 200), starTextures[stars-1], ScaleMode.StretchToFill, true, 40.0F);
+			GUI.DrawTexture (new Rect (250, 150, 400, 200), starTextures[stars-1], ScaleMode.StretchToFill, true, 40.0F);
 		}
 	}
 
