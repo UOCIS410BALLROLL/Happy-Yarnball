@@ -33,9 +33,8 @@ public class GameController : MonoBehaviour {
     private float roundTime;
 	private bool endLevel;
     private bool gameOver;
-	private bool displayingMessage;
-	private bool canUpdateAlert, showingImportantText;
     private GameObject cam;
+	private float alertEndTime;
 	private int[] powerupCounts;
 
 	private const int NUMPOWS = 3;
@@ -54,7 +53,6 @@ public class GameController : MonoBehaviour {
         minMorsels = Mathf.Clamp(minMorsels, 0, totalMorsels);
         gameOver = false;
 		endLevel = false;
-		canUpdateAlert = true;
         deathSound = GameObject.FindGameObjectWithTag("DeathBox").GetComponent<AudioSource>();
         starTimerText.text = "";
 		UpdateUI ();
@@ -62,16 +60,15 @@ public class GameController : MonoBehaviour {
 		player.GetComponent<PlayerController> ().SetJumpHeight (jumpHeight);
         cam = GameObject.FindGameObjectWithTag("MainCamera");
         cam.GetComponent<CameraController>().SetPlayer(player);
-        StartCoroutine(StartLevelMessage());
-		displayingMessage = false;
+        StartLevelMessage();
 		levelName = SceneManager.GetActiveScene ().name;
+		nextLevel.gameObject.SetActive (false);
+		mainMenu.gameObject.SetActive (false);
+		restartLevel.gameObject.SetActive (false);
 		powerupCounts = new int[NUMPOWS];
 		for (int i = 0; i < NUMPOWS; i++) {
 			powerupCounts [i] = 0;
 		}
-		nextLevel.gameObject.SetActive (false);
-		mainMenu.gameObject.SetActive (false);
-		restartLevel.gameObject.SetActive (false);
 //		desertSound = GetComponent<AudioSource> ();
 
     }
@@ -93,13 +90,8 @@ public class GameController : MonoBehaviour {
 		{
 			CheckCheats ();
 		}
-		if (canUpdateAlert && !showingImportantText) {
-            alertText.text = string.Format ("{0}{1}{2}",
-				(powerupCounts [SPEED] == 0 ? "" : "Speed Up\n"),
-				(powerupCounts [JUMP] == 0 ? "" : "Double Jump\n"),
-				(powerupCounts [SHRINK] == 0 ? "" : "Shrink\n")
-            );
-            
+		if (currentTime >= alertEndTime) {
+			alertText.text = "";
 		}
 		Timer ();
     }
@@ -231,43 +223,30 @@ public class GameController : MonoBehaviour {
 		}
 		return 1;
 	}
+
     public int MorselCount()
     {
         return morselCount;
     }
+
     void UpdateUI()
     {
         morselText.text = string.Format("{0:D2}/{1:D2}", morselCount, totalMorsels);
 		morselText.color = morselCount >= minMorsels ? Color.green : Color.red;
     }
 
+	[SerializeField]
+	public void SetAlertText(string str, float duration) {
+		alertText.text = str;
+		alertEndTime = currentTime + duration;
+	}
+
     [SerializeField]
     public void AddMorsel()
     {
         morselCount++;
         UpdateUI();
-    }
-
-    [SerializeField]
-    public void PlayerDestroy()
-    {
-        Destroy(player.gameObject);
-        StartCoroutine(GameOver());
-    }
-
-    [SerializeField]
-    public void ExitReached()
-    {
-        if (morselCount >= minMorsels)
-        {
-			LevelComplete ();
-        }
-        else if (!displayingMessage)
-        {
-            displayingMessage = true;
-			StartCoroutine(NotFinishedMessage());
-        }
-    }
+	}
 
 	[SerializeField]
 	public void AddPower(int powerCons) {
@@ -288,39 +267,49 @@ public class GameController : MonoBehaviour {
 		return powerupCounts [powerCons];
 	}
 
-    IEnumerator StartLevelMessage()
+    [SerializeField]
+    public void PlayerDestroy()
     {
-		showingImportantText = true;
-		if (canUpdateAlert) {
-			alertText.text = string.Format ("Level Goal: {0}/{1} Cats", minMorsels, totalMorsels);
-		}
-        yield return new WaitForSeconds(3);
-		if (canUpdateAlert) {
-			alertText.text = "";
-		}
-		showingImportantText = false;
+        Destroy(player.gameObject);
+        StartCoroutine(GameOver());
+    }
+
+    [SerializeField]
+    public void ExitReached()
+    {
+        if (morselCount >= minMorsels)
+        {
+			LevelComplete ();
+        }
+        else
+        {
+			NotFinishedMessage();
+        }
+    }
+
+    void StartLevelMessage()
+    {
+		SetAlertText (string.Format ("Level Goal: {0}/{1} Cats", minMorsels, totalMorsels), 3.0f);
     }
 	
-	IEnumerator NotFinishedMessage() {
-		showingImportantText = true;
-		if (canUpdateAlert) {
-			alertText.text = string.Format ("Need {0} Cats to Advance", minMorsels - morselCount);
-		}
-		yield return new WaitForSeconds (2);
-		if (canUpdateAlert) {
-			alertText.text = "";
-		}
-		displayingMessage = false;
+	void NotFinishedMessage() {
+		SetAlertText(string.Format ("Need {0} Cats to Advance", minMorsels - morselCount), 2.0f);
 	}
 
     IEnumerator GameOver()
     {
 		gameOver = true;
-		canUpdateAlert = false;
+		GameObject.FindGameObjectWithTag ("UIPickup").GetComponent<PickupDisplayer> ().HidePickup ();
+		GameObject.FindGameObjectWithTag ("UISpeed").GetComponent<PickupDisplayer> ().HidePickup ();
+		GameObject.FindGameObjectWithTag ("UIDouble").GetComponent<PickupDisplayer> ().HidePickup ();
+		GameObject.FindGameObjectWithTag ("UIShrink").GetComponent<PickupDisplayer> ().HidePickup ();
         deathSound.Play();
-        alertText.text = "Game Over";
+		SetAlertText("Game Over", 2.0f);
         yield return new WaitForSeconds(2);
-		alertText.text = "Press Any Key to Restart";
+		while (true) {
+			SetAlertText ("Game Over\nPress Any Key to Restart", 2.0f);
+			yield return new WaitForSeconds (2);
+		}
     }
 
 	void Timer()

@@ -33,4 +33,16 @@ public class PickupDisplayer : MonoBehaviour {
 			}
 		}
 	}
+
+	[SerializeField]
+	public void HidePickup() {
+		if (isPowerup) {
+			GetComponent<MeshRenderer> ().enabled = false;
+		} else {
+			SkinnedMeshRenderer[] meshes = GetComponentsInChildren<SkinnedMeshRenderer> ();
+			for (int i = 0; i < meshes.Length; i++) {
+				meshes [i].enabled = false;
+			}
+		}
+	}
 }

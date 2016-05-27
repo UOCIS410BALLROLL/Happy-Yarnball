@@ -121,6 +121,7 @@ public class PlayerController : MonoBehaviour {
             powerup.SetInactive ();
 			upgrade = powerup.GetPower();
 			StartCoroutine(GameObject.FindGameObjectWithTag("UISpeed").GetComponent<PickupDisplayer> ().ShowPickup (powerup.GetDuration()));
+			game.SetAlertText (powerup.powerUp, 1.5f);
 		}
 		else if (other.gameObject.CompareTag("Goal"))
 		{
@@ -134,6 +135,7 @@ public class PlayerController : MonoBehaviour {
             powerup.SetInactive ();
 			canDoubleJump = true;
 			StartCoroutine(GameObject.FindGameObjectWithTag("UIDouble").GetComponent<PickupDisplayer> ().ShowPickup (powerup.GetDuration()));
+			game.SetAlertText (powerup.powerUp, 1.5f);
 		}
         else if (other.gameObject.CompareTag("Shrink"))
         {
@@ -142,6 +144,7 @@ public class PlayerController : MonoBehaviour {
 			scaleVal = powerup.GetPower();
             rb.transform.localScale = new Vector3(scaleVal, scaleVal, scaleVal);
 			StartCoroutine(GameObject.FindGameObjectWithTag("UIShrink").GetComponent<PickupDisplayer> ().ShowPickup (powerup.GetDuration()));
+			game.SetAlertText (powerup.powerUp, 1.5f);
         }
         
     }
