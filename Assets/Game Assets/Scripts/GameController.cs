@@ -183,7 +183,13 @@ public class GameController : MonoBehaviour {
 			PlayerPrefs.SetFloat (string.Format ("{0}-Time", levelName), currentTime);
 		}
 		else if(GetStars() == PlayerPrefs.GetInt(string.Format ("{0}-Stars", levelName))) {
-			PlayerPrefs.SetFloat (string.Format ("{0}-Time", levelName), Mathf.Min(currentTime, PlayerPrefs.GetFloat(string.Format ("{0}-Time", levelName))));
+			if (PlayerPrefs.GetInt (string.Format ("{0}-Cats", levelName)) < morselCount) {
+				PlayerPrefs.SetInt (string.Format ("{0}-Cats", levelName), morselCount);
+				PlayerPrefs.SetFloat (string.Format ("{0}-Time", levelName), currentTime);
+			}
+			else if (PlayerPrefs.GetInt (string.Format ("{0}-Cats", levelName)) == morselCount) {
+				PlayerPrefs.SetFloat (string.Format ("{0}-Time", levelName), Mathf.Min (currentTime, PlayerPrefs.GetFloat (string.Format ("{0}-Time", levelName))));
+			}
 		}
 		PlayerPrefs.Save ();
 
