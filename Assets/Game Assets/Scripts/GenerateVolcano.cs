@@ -41,5 +41,6 @@ public class GenerateVolcano : MonoBehaviour {
 		GameObject terrain = Terrain.CreateTerrainGameObject (tdata);
 		terrain.name = "Volcano";
 		terrain.GetComponent<Terrain> ().materialType = Terrain.MaterialType.Custom;
+		terrain.layer = 8;
 	}
 }
