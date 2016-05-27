@@ -28,16 +28,19 @@ public class UpgradeController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Time.time > durationTime)
+
+		if (durationTime != 0 && Time.time > durationTime) {
+			durationTime = 0;
 			timeText.text = "";
-		else
-			timeText.text = string.Format("  {0}", (int)(durationTime - Time.time));
+			gc.RemPower (powerCons);
+		} else if (durationTime != 0) {
+			timeText.text = string.Format("{0}", (int)(durationTime - Time.time));
+		}
 		
 		if (inactiveTime != 0 && Time.time > inactiveTime) {
 			inactiveTime = 0;
 			this.gameObject.GetComponent<Collider> ().enabled = true;
 			this.gameObject.GetComponent<Renderer> ().enabled = true;
-			gc.RemPower (powerCons);
 		}
 	}
 
