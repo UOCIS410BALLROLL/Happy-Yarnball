@@ -324,7 +324,7 @@ public class GameController : MonoBehaviour {
             currentTime *= 100;
             roundTime = Mathf.Round(currentTime);
             currentTime = (roundTime / 100);
-            timerText.text = "Time: " + currentTime.ToString ();
+            timerText.text = "Time:\n" + currentTime.ToString ();
 			currentTime += Time.deltaTime;
 		}
 	}
