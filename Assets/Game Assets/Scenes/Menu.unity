@@ -2170,7 +2170,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6218a50f9e37dcf4ba25da0bf46467e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  credits: {fileID: 0}
+  credits: {fileID: 1495403949}
 --- !u!114 &1495403949
 MonoBehaviour:
   m_ObjectHideFlags: 0
