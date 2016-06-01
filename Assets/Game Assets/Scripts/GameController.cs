@@ -329,10 +329,7 @@ public class GameController : MonoBehaviour {
 
 	void Timer()
 	{
-		if (PlayerPrefs.GetInt ("Cheatyface") == 1) {
-			timerText.text = "Cheater!";
-		}
-		else if (gameOver) { // change to death condition
+		if (gameOver) { // change to death condition
 			currentTime = 0;
 		} else if (gameOver || nextLevel.gameObject.activeSelf) {}
 		else{
@@ -340,7 +337,13 @@ public class GameController : MonoBehaviour {
             roundTime = Mathf.Round(currentTime);
             currentTime = (roundTime / 100);
             //timerText.text = "Time:\n" + currentTime.ToString ();
-			timerText.text = "Time: " + string.Format ("{0:000.00}", currentTime).PadLeft(6);
+			
+			if (PlayerPrefs.GetInt ("Cheatyface") == 1) {
+				timerText.text = "Cheater!";
+			}
+			else {
+				timerText.text = "Time: " + string.Format ("{0:000.00}", currentTime).PadLeft(6);
+			}
 			currentTime += Time.deltaTime;
 		}
 	}
