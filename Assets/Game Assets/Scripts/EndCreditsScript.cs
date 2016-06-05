@@ -5,16 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class EndCreditsScript : MonoBehaviour {
 
-	public GameObject camera;
+	public GameObject cam;
 	public int speed = 1;
 	public string level;
 
 	void Start() {
-		camera = GameObject.FindGameObjectWithTag ("MainCamera");
+		cam = GameObject.FindGameObjectWithTag ("MainCamera");
 	}
 
 	void Update() {
-		camera.GetComponent<Camera>().transform.Translate (Vector3.down * Time.deltaTime * speed);
+		cam.GetComponent<Camera>().transform.Translate (Vector3.down * Time.deltaTime * speed);
 	}
 
 	IEnumerator waitFor() {
