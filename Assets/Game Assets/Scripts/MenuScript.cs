@@ -7,7 +7,7 @@ public class MenuScript : MonoBehaviour {
 	public Text cheatText;
 	// Use this for initialization
 	void Start () {
-		if (PlayerPrefs.GetInt ("Cheatyface") == 1) {
+		if (PlayerPrefs.GetInt ("Cheatyface") == 1 && SceneManager.GetActiveScene().name.CompareTo("Help") != 0 && cheatText != null) {
 			cheatText.text = "Cheatyface";
 		}
 	}

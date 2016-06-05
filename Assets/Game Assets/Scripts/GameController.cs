@@ -15,6 +15,7 @@ public class GameController : MonoBehaviour {
 	public Text timerText;
     public Text starTimerText;
 	public Texture[] starTextures;
+	public Image starTexture;
 
     public int minMorsels;
 	public int goalTime;
@@ -76,6 +77,7 @@ public class GameController : MonoBehaviour {
 		for (int i = 0; i < NUMPOWS; i++) {
 			powerupCounts [i] = 0;
 		}
+		starTexture.enabled = false;
 //		desertSound = GetComponent<AudioSource> ();
 
     }
@@ -84,7 +86,9 @@ public class GameController : MonoBehaviour {
 		if (endLevel) {
 			int stars = GetStars ();
 			if (stars > 0) {
-				GUI.DrawTexture (new Rect (250, 150, 400, 200), starTextures [stars - 1], ScaleMode.StretchToFill, true, 40.0F);
+				//GUI.DrawTexture (new Rect (250, 150, 400, 137.5f), starTextures [stars - 1], ScaleMode.ScaleAndCrop, true, 2.9125f);
+				starTexture.material.SetTexture("_MainTex", starTextures[stars - 1]);
+				starTexture.enabled = true;
 			}
 		}
 	}
