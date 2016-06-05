@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour {
 	public float lavaSinkTime; //How long it takes for the player to sink into lava
 	public float lavaSinkMaxAngularVelocity;
 
+	private float acceleration;
 	private Rigidbody rb;
     private GameController game;
 	private AudioSource audioSource;
@@ -31,6 +32,7 @@ public class PlayerController : MonoBehaviour {
 		audioSource = GetComponent<AudioSource> ();
 		upgrade = 1;
 		scaleVal = 1.0f;
+		acceleration = 1.5f;
     }
 	
 	bool isGrounded() {
@@ -95,7 +97,7 @@ public class PlayerController : MonoBehaviour {
         
         ///Vector3 movement = Vector3.ClampMagnitude(new Vector3(adjustedHorizontal, moveHeight, adjustedVertical), 1.0f);
 		Vector3 movement = new Vector3(adjustedHorizontal,0.0f,adjustedVertical);
-		rb.AddForce(movement * speed * upgrade);
+		rb.AddForce(movement * speed * upgrade * acceleration);
 		Vector2 clampedVelocity = Vector2.ClampMagnitude(new Vector2(rb.velocity.x, rb.velocity.z), speed * upgrade);
 		rb.velocity = new Vector3(clampedVelocity.x, rb.velocity.y, clampedVelocity.y);
 	}
