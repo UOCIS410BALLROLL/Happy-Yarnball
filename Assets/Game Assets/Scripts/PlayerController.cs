@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour {
 		audioSource = GetComponent<AudioSource> ();
 		upgrade = 1;
 		scaleVal = 1.0f;
-		acceleration = 1.5f;
+		acceleration = 1.25f;
     }
 	
 	bool isGrounded() {
