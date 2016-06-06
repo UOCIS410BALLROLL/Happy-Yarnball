@@ -6342,7 +6342,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11414128, guid: e86b04a9d10335a49bcddacaa1b3382a, type: 2}
       propertyPath: goalTime
-      value: 100
+      value: 110
       objectReference: {fileID: 0}
     - target: {fileID: 11414128, guid: e86b04a9d10335a49bcddacaa1b3382a, type: 2}
       propertyPath: alertText

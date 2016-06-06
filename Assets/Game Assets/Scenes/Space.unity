@@ -3252,7 +3252,7 @@ Prefab:
       objectReference: {fileID: 493761032}
     - target: {fileID: 11414128, guid: e86b04a9d10335a49bcddacaa1b3382a, type: 2}
       propertyPath: goalTime
-      value: 80
+      value: 85
       objectReference: {fileID: 0}
     - target: {fileID: 11414128, guid: e86b04a9d10335a49bcddacaa1b3382a, type: 2}
       propertyPath: starTexture
