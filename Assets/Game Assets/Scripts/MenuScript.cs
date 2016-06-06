@@ -15,7 +15,10 @@ public class MenuScript : MonoBehaviour {
 			PlayerPrefs.Save ();
 			LoadHelp ();
 		}
-	
+		if (PlayerPrefs.GetInt ("HorizontalDirection") == 0) {
+			PlayerPrefs.SetInt ("HorizontalDirection", 1);
+			PlayerPrefs.SetInt ("VerticalDirection", 1);
+		}
 	}
 	
 	// Update is called once per frame

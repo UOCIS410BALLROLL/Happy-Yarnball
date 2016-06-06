@@ -34,8 +34,8 @@ public class CameraController : MonoBehaviour {
         if (player != null)
         {
             Vector3 target_angles = transform.eulerAngles;
-            float verMove = Input.GetAxis("VerticalCam");
-            float horMove = Input.GetAxis("HorizontalCam");
+			float verMove = PlayerPrefs.GetInt("VerticalDirection") * Input.GetAxis("VerticalCam");
+			float horMove = PlayerPrefs.GetInt("HorizontalDirection") * Input.GetAxis("HorizontalCam");
             target_angles += new Vector3(0, horMove * -speed * Time.deltaTime, 0);
             target_angles += new Vector3(verMove * -speed * Time.deltaTime, 0, 0);
 
