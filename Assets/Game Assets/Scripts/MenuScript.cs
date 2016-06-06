@@ -27,7 +27,11 @@ public class MenuScript : MonoBehaviour {
 	}
 
 	public void ResetData(){
+		int vert = PlayerPrefs.GetInt ("VerticalDirection");
+		int hor = PlayerPrefs.GetInt ("HorizontalDirection");
 		PlayerPrefs.DeleteAll ();
+		PlayerPrefs.SetInt ("VerticalDirection", vert);
+		PlayerPrefs.SetInt ("HorizontalDirection", hor);
 	}
 
 	public void LoadHelp(){
