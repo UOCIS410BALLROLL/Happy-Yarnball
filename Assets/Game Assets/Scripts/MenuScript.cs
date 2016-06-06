@@ -10,6 +10,12 @@ public class MenuScript : MonoBehaviour {
 		if (PlayerPrefs.GetInt ("Cheatyface") == 1 && SceneManager.GetActiveScene().name.CompareTo("Help") != 0 && cheatText != null) {
 			cheatText.text = "Cheatyface";
 		}
+		if (PlayerPrefs.GetInt ("hasrun") == 0) {
+			PlayerPrefs.SetInt ("hasrun", 1);
+			PlayerPrefs.Save ();
+			LoadHelp ();
+		}
+	
 	}
 	
 	// Update is called once per frame
@@ -22,10 +28,13 @@ public class MenuScript : MonoBehaviour {
 	}
 
 	public void LoadHelp(){
+
 		SceneManager.LoadScene (7);
 	}
 
 	public void LoadMenu(){
+		PlayerPrefs.SetInt ("hasrun", 1);
+		PlayerPrefs.Save ();
 		SceneManager.LoadScene (0);
 	}
 
