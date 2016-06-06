@@ -40,13 +40,13 @@ public class LoadButtonScript : MonoBehaviour {
 	}
 
 	public void NewGame(){
-		if (PlayerPrefs.GetInt ("Space-Stars") > 0) {
+		if (PlayerPrefs.GetInt ("Mountain-Stars") > 0) {
 			SceneManager.LoadScene (5);
-		} else if (PlayerPrefs.GetInt ("Mountain-Stars") > 0) {
-			SceneManager.LoadScene (4);
 		} else if (PlayerPrefs.GetInt ("Forest-Stars") > 0) {
-			SceneManager.LoadScene (3);
+			SceneManager.LoadScene (4);
 		} else if (PlayerPrefs.GetInt ("Ocean-Stars") > 0) {
+			SceneManager.LoadScene (3);
+		} else if (PlayerPrefs.GetInt ("Desert-Stars") > 0) {
 			SceneManager.LoadScene (2);
 		} else {
 			SceneManager.LoadScene (1);
